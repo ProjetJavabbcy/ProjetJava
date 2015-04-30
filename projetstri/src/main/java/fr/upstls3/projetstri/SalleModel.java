@@ -17,7 +17,7 @@ public class SalleModel extends DefaultTableModel {
     private List<String> k;
 
     public SalleModel() {
-        k = new ArrayList<>();
+        k = new ArrayList<String>();
     }
 
     @Override
