@@ -15,12 +15,15 @@ public class Salle {
     private int nbPostePossibles;
     private String emplacement;
     
+    
     public Salle (String nom, String emplacement, int nbPostePossi, int nbPosteIns)
     {
         this.nom = nom;
         this.emplacement = emplacement;
         this.nbPostePossibles = nbPostePossi;
         this.nbPosteInstalles = nbPosteIns;
+        
+        
     }
     
     Salle s = new Salle("toto", "u2", 50, 10);

@@ -14,10 +14,10 @@ import javax.swing.table.DefaultTableModel;
  */
 public class SalleModel extends DefaultTableModel {
 
-    private List<String> k;
+    private List<Salle> k;
 
     public SalleModel() {
-        k = new ArrayList<String>();
+        k = new ArrayList<Salle>();
     }
 
     @Override
@@ -68,7 +68,7 @@ public class SalleModel extends DefaultTableModel {
         fireTableStructureChanged();
     }
 
-    void addItem(String text) {
-        k.add(text);
+    void addItem(Salle) {
+        k.add();
     }
 }
