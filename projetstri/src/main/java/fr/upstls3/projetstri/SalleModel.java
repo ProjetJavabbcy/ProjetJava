@@ -17,7 +17,7 @@ public class SalleModel extends DefaultTableModel {
     private List<Salle> k;
 
     public SalleModel() {
-        k = new ArrayList<Salle>();
+        this.k = new ArrayList<Salle>();
     }
 
     @Override
@@ -48,11 +48,20 @@ public class SalleModel extends DefaultTableModel {
     
     @Override
     public Object getValueAt(int row, int column) {
-        if (column == 1) {
-            return k.get(row);
-        } else {
-            return column;
+        if (column == 0) {
+            return k.get(row).getNom();
+        } 
+        else if (column == 1){
+            return k.get(row).getEmplacement();
         }
+        else if (column == 2){
+            return k.get(row).getNbPostePossibles();
+        }
+        else if (column == 3){
+            return k.get(row).getNbPosteInstalles();
+        }
+        
+        return "error";
     }
 
     @Override
@@ -64,11 +73,11 @@ public class SalleModel extends DefaultTableModel {
         }
     }
 
-    void refresh() {
+    public void refresh() {
         fireTableStructureChanged();
     }
 
-    void addItem(Salle) {
-        k.add();
+    public void addItem(Salle s) {
+        k.add(s);
     }
 }

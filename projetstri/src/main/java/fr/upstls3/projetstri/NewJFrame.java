@@ -411,7 +411,8 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void bouton_validerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouton_validerActionPerformed
         // TODO add your handling code here:
-        salleModel.addItem(champ_salle.getText());
+        
+        salleModel.addItem(new Salle(null, null, PROPERTIES, PROPERTIES));
         salleModel.refresh();
     }//GEN-LAST:event_bouton_validerActionPerformed
 
