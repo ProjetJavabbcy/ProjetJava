@@ -70,20 +70,28 @@
                           <Component id="label_ajout_equipement" min="-2" max="-2" attributes="0"/>
                           <Component id="label_equipement" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="label_nom_equipement" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
-                                      <Component id="label_type" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                                      <Component id="label_cpu" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="label_nom_equipement" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+                                          <Component id="label_type" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                                          <Component id="label_cpu" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="champ_nom_equipement" min="-2" pref="70" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="ComboBox_type" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="champ_cpu" min="-2" pref="60" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="champ_nom_equipement" min="-2" pref="70" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="ComboBox_type" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="champ_cpu" min="-2" pref="60" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="bouton_valider_equipement" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="bouton_annuler_equipement" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
@@ -122,15 +130,20 @@
                               </Group>
                               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="label_nom_salle" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="champ_salle" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="label_nom_salle" min="-2" max="-2" attributes="0"/>
+                                  <Component id="champ_salle" min="-2" pref="99" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="label_emplacement_salle" min="-2" max="-2" attributes="0"/>
-                                  <Component id="champ_emplacement_salle" min="-2" pref="94" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="champ_emplacement_salle" min="-2" pref="94" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="label_emplacement_salle" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="label_poste_possible" min="-2" max="-2" attributes="0"/>
                                   <Component id="champ_poste_possible" min="-2" pref="80" max="-2" attributes="0"/>
@@ -143,9 +156,9 @@
                               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Component id="bouton_valider" min="-2" max="-2" attributes="0"/>
+                              <Component id="bouton_valider_salle" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="bouton_annuler" min="-2" max="-2" attributes="0"/>
+                              <Component id="bouton_annuler_salle" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -181,8 +194,8 @@
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="bouton_valider" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="bouton_annuler" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bouton_valider_salle" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bouton_annuler_salle" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
@@ -212,7 +225,12 @@
                   <Component id="champ_carte_graphique" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="champ_os" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="248" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="bouton_valider_equipement" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bouton_annuler_equipement" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="180" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -287,6 +305,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="champ_emplacement_salle">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="champ_emplacement_salleActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="label_poste_possible">
       <Properties>
@@ -302,18 +323,21 @@
     </Component>
     <Component class="javax.swing.JTextField" name="champ_poste_installe">
     </Component>
-    <Component class="javax.swing.JButton" name="bouton_valider">
+    <Component class="javax.swing.JButton" name="bouton_valider_salle">
       <Properties>
         <Property name="text" type="java.lang.String" value="Valider"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bouton_validerActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bouton_valider_salleActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="bouton_annuler">
+    <Component class="javax.swing.JButton" name="bouton_annuler_salle">
       <Properties>
         <Property name="text" type="java.lang.String" value="Annuler"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bouton_annuler_salleActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator1">
     </Component>
@@ -479,6 +503,16 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="champ_num_salleActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="bouton_valider_equipement">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Valider"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="bouton_annuler_equipement">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Annuler"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

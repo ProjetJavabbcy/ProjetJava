@@ -43,8 +43,8 @@ public class NewJFrame extends javax.swing.JFrame {
         champ_poste_possible = new javax.swing.JTextField();
         label_poste_installe = new javax.swing.JLabel();
         champ_poste_installe = new javax.swing.JTextField();
-        bouton_valider = new javax.swing.JButton();
-        bouton_annuler = new javax.swing.JButton();
+        bouton_valider_salle = new javax.swing.JButton();
+        bouton_annuler_salle = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         label_equipement = new javax.swing.JLabel();
         tableau_equipement = new javax.swing.JScrollPane();
@@ -66,6 +66,8 @@ public class NewJFrame extends javax.swing.JFrame {
         champ_os = new javax.swing.JTextField();
         label_num_salle = new javax.swing.JLabel();
         champ_num_salle = new javax.swing.JTextField();
+        bouton_valider_equipement = new javax.swing.JButton();
+        bouton_annuler_equipement = new javax.swing.JButton();
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -99,18 +101,29 @@ public class NewJFrame extends javax.swing.JFrame {
 
         label_emplacement_salle.setText("Emplacement salle :");
 
+        champ_emplacement_salle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                champ_emplacement_salleActionPerformed(evt);
+            }
+        });
+
         label_poste_possible.setText("Nb postes possibles : ");
 
         label_poste_installe.setText("Nb postes installés : ");
 
-        bouton_valider.setText("Valider");
-        bouton_valider.addActionListener(new java.awt.event.ActionListener() {
+        bouton_valider_salle.setText("Valider");
+        bouton_valider_salle.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bouton_validerActionPerformed(evt);
+                bouton_valider_salleActionPerformed(evt);
             }
         });
 
-        bouton_annuler.setText("Annuler");
+        bouton_annuler_salle.setText("Annuler");
+        bouton_annuler_salle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bouton_annuler_salleActionPerformed(evt);
+            }
+        });
 
         label_equipement.setText("Equipements : ");
 
@@ -267,6 +280,10 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
+        bouton_valider_equipement.setText("Valider");
+
+        bouton_annuler_equipement.setText("Annuler");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -291,19 +308,25 @@ public class NewJFrame extends javax.swing.JFrame {
                             .addComponent(label_ajout_equipement)
                             .addComponent(label_equipement)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(label_nom_equipement)
+                                            .addGap(59, 59, 59)
+                                            .addComponent(label_type)
+                                            .addGap(44, 44, 44)
+                                            .addComponent(label_cpu))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(champ_nom_equipement, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(ComboBox_type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(champ_cpu, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(label_nom_equipement)
-                                        .addGap(59, 59, 59)
-                                        .addComponent(label_type)
-                                        .addGap(44, 44, 44)
-                                        .addComponent(label_cpu))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(champ_nom_equipement, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(ComboBox_type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(champ_cpu, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(bouton_valider_equipement)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(bouton_annuler_equipement)
+                                        .addGap(81, 81, 81)))
                                 .addGap(24, 24, 24)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(label_ram)
@@ -332,12 +355,15 @@ public class NewJFrame extends javax.swing.JFrame {
                                 .addGap(33, 33, 33)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(label_nom_salle)
-                                    .addComponent(champ_salle, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(champ_salle, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(label_emplacement_salle)
-                                    .addComponent(champ_emplacement_salle, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(43, 43, 43)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(champ_emplacement_salle, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(43, 43, 43))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(label_emplacement_salle)
+                                        .addGap(30, 30, 30)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(label_poste_possible)
                                     .addComponent(champ_poste_possible, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -347,9 +373,9 @@ public class NewJFrame extends javax.swing.JFrame {
                                     .addComponent(champ_poste_installe, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(39, 39, 39))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(bouton_valider)
+                                .addComponent(bouton_valider_salle)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(bouton_annuler)))))
+                                .addComponent(bouton_annuler_salle)))))
                 .addContainerGap(85, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -377,8 +403,8 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(champ_num_salle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bouton_valider)
-                    .addComponent(bouton_annuler))
+                    .addComponent(bouton_valider_salle)
+                    .addComponent(bouton_annuler_salle))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -405,7 +431,11 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(champ_disque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(champ_carte_graphique, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(champ_os, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(248, Short.MAX_VALUE))
+                .addGap(45, 45, 45)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bouton_valider_equipement)
+                    .addComponent(bouton_annuler_equipement))
+                .addContainerGap(180, Short.MAX_VALUE))
         );
 
         pack();
@@ -427,18 +457,31 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_champ_osActionPerformed
 
-    private void bouton_validerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouton_validerActionPerformed
+    private void bouton_valider_salleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouton_valider_salleActionPerformed
         // TODO add your handling code here:
         int i = Integer.parseInt(champ_num_salle.getText()) ;
         int j = Integer.parseInt(champ_poste_possible.getText()) ;
         int k = Integer.parseInt(champ_poste_installe.getText()) ;
         salleModel.addItem(new Salle(i,champ_salle.getText(), champ_emplacement_salle.getText(), j, k));
         salleModel.refresh();
-    }//GEN-LAST:event_bouton_validerActionPerformed
+    }//GEN-LAST:event_bouton_valider_salleActionPerformed
 
     private void champ_num_salleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_champ_num_salleActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_champ_num_salleActionPerformed
+
+    private void champ_emplacement_salleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_champ_emplacement_salleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_champ_emplacement_salleActionPerformed
+
+    private void bouton_annuler_salleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouton_annuler_salleActionPerformed
+        // TODO add your handling code here:
+        champ_num_salle.setText("");
+        champ_salle.setText("");
+        champ_emplacement_salle.setText("");
+        champ_poste_possible.setText("");
+        champ_poste_installe.setText("");
+    }//GEN-LAST:event_bouton_annuler_salleActionPerformed
 
     /**
      * @param args the command line arguments
@@ -476,8 +519,10 @@ public class NewJFrame extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox ComboBox_type;
-    private javax.swing.JButton bouton_annuler;
-    private javax.swing.JButton bouton_valider;
+    private javax.swing.JButton bouton_annuler_equipement;
+    private javax.swing.JButton bouton_annuler_salle;
+    private javax.swing.JButton bouton_valider_equipement;
+    private javax.swing.JButton bouton_valider_salle;
     private javax.swing.JTextField champ_carte_graphique;
     private javax.swing.JTextField champ_cpu;
     private javax.swing.JTextField champ_disque;
