@@ -48,41 +48,12 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="jSeparator1" max="32767" attributes="0"/>
           <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="label_ajout_salle" min="-2" max="-2" attributes="0"/>
                           <Component id="label_salle" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="label_nom_salle" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="champ_emplacement_salle" max="32767" attributes="0"/>
-                                  <Component id="label_emplacement_salle" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="label_poste_possible" min="-2" max="-2" attributes="0"/>
-                                  <Component id="champ_texte_possible" min="-2" pref="80" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="label_poste_installe" min="-2" max="-2" attributes="0"/>
-                                  <Component id="champ_poste_installe" min="-2" pref="80" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="bouton_valider" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="bouton_annuler" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="champ_salle" min="-2" pref="100" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -141,6 +112,43 @@
                           </Group>
                       </Group>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="label_num_salle" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="champ_num_salle" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="label_nom_salle" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="champ_salle" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="label_emplacement_salle" min="-2" max="-2" attributes="0"/>
+                                  <Component id="champ_emplacement_salle" min="-2" pref="94" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="label_poste_possible" min="-2" max="-2" attributes="0"/>
+                                  <Component id="champ_poste_possible" min="-2" pref="80" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="label_poste_installe" min="-2" max="-2" attributes="0"/>
+                                  <Component id="champ_poste_installe" min="-2" pref="80" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="bouton_valider" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="bouton_annuler" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
               </Group>
               <EmptySpace pref="85" max="32767" attributes="0"/>
           </Group>
@@ -161,13 +169,15 @@
                   <Component id="label_emplacement_salle" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="label_poste_possible" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="label_poste_installe" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="label_num_salle" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="champ_salle" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="champ_emplacement_salle" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="champ_texte_possible" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="champ_poste_possible" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="champ_poste_installe" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="champ_num_salle" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -283,7 +293,7 @@
         <Property name="text" type="java.lang.String" value="Nb postes possibles : "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="champ_texte_possible">
+    <Component class="javax.swing.JTextField" name="champ_poste_possible">
     </Component>
     <Component class="javax.swing.JLabel" name="label_poste_installe">
       <Properties>
@@ -458,6 +468,16 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="champ_osActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="label_num_salle">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Numero salle :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="champ_num_salle">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="champ_num_salleActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

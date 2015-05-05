@@ -40,7 +40,7 @@ public class NewJFrame extends javax.swing.JFrame {
         label_emplacement_salle = new javax.swing.JLabel();
         champ_emplacement_salle = new javax.swing.JTextField();
         label_poste_possible = new javax.swing.JLabel();
-        champ_texte_possible = new javax.swing.JTextField();
+        champ_poste_possible = new javax.swing.JTextField();
         label_poste_installe = new javax.swing.JLabel();
         champ_poste_installe = new javax.swing.JTextField();
         bouton_valider = new javax.swing.JButton();
@@ -64,6 +64,8 @@ public class NewJFrame extends javax.swing.JFrame {
         champ_carte_graphique = new javax.swing.JTextField();
         label_os = new javax.swing.JLabel();
         champ_os = new javax.swing.JTextField();
+        label_num_salle = new javax.swing.JLabel();
+        champ_num_salle = new javax.swing.JTextField();
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -257,40 +259,26 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
+        label_num_salle.setText("Numero salle :");
+
+        champ_num_salle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                champ_num_salleActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator1)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(label_ajout_salle)
-                            .addComponent(label_salle)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(label_nom_salle)
-                                .addGap(103, 103, 103)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(champ_emplacement_salle)
-                                    .addComponent(label_emplacement_salle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(83, 83, 83)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(label_poste_possible)
-                                    .addComponent(champ_texte_possible, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(66, 66, 66)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(label_poste_installe)
-                                    .addComponent(champ_poste_installe, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(bouton_valider)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(bouton_annuler))
-                            .addComponent(champ_salle, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(label_salle)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(45, 45, 45)
                         .addComponent(tableau_Salle, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -333,7 +321,35 @@ public class NewJFrame extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(champ_carte_graphique, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(champ_os, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                        .addComponent(champ_os, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(label_num_salle)
+                                    .addComponent(champ_num_salle, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(33, 33, 33)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(label_nom_salle)
+                                    .addComponent(champ_salle, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(label_emplacement_salle)
+                                    .addComponent(champ_emplacement_salle, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(43, 43, 43)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(label_poste_possible)
+                                    .addComponent(champ_poste_possible, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(33, 33, 33)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(label_poste_installe)
+                                    .addComponent(champ_poste_installe, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(39, 39, 39))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(bouton_valider)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(bouton_annuler)))))
                 .addContainerGap(85, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -350,13 +366,15 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(label_nom_salle)
                     .addComponent(label_emplacement_salle)
                     .addComponent(label_poste_possible)
-                    .addComponent(label_poste_installe))
+                    .addComponent(label_poste_installe)
+                    .addComponent(label_num_salle))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(champ_salle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(champ_emplacement_salle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(champ_texte_possible, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(champ_poste_installe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(champ_poste_possible, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(champ_poste_installe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(champ_num_salle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bouton_valider)
@@ -411,10 +429,16 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void bouton_validerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouton_validerActionPerformed
         // TODO add your handling code here:
-        
-        salleModel.addItem(new Salle(null, null, PROPERTIES, PROPERTIES));
+        int i = Integer.parseInt(champ_num_salle.getText()) ;
+        int j = Integer.parseInt(champ_poste_possible.getText()) ;
+        int k = Integer.parseInt(champ_poste_installe.getText()) ;
+        salleModel.addItem(new Salle(i,champ_salle.getText(), champ_emplacement_salle.getText(), j, k));
         salleModel.refresh();
     }//GEN-LAST:event_bouton_validerActionPerformed
+
+    private void champ_num_salleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_champ_num_salleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_champ_num_salleActionPerformed
 
     /**
      * @param args the command line arguments
@@ -459,11 +483,12 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField champ_disque;
     private javax.swing.JTextField champ_emplacement_salle;
     private javax.swing.JTextField champ_nom_equipement;
+    private javax.swing.JTextField champ_num_salle;
     private javax.swing.JTextField champ_os;
     private javax.swing.JTextField champ_poste_installe;
+    private javax.swing.JTextField champ_poste_possible;
     private javax.swing.JTextField champ_ram;
     private javax.swing.JTextField champ_salle;
-    private javax.swing.JTextField champ_texte_possible;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable2;
@@ -477,6 +502,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel label_equipement;
     private javax.swing.JLabel label_nom_equipement;
     private javax.swing.JLabel label_nom_salle;
+    private javax.swing.JLabel label_num_salle;
     private javax.swing.JLabel label_os;
     private javax.swing.JLabel label_poste_installe;
     private javax.swing.JLabel label_poste_possible;

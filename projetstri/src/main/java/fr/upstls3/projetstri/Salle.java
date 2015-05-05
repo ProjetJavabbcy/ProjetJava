@@ -10,14 +10,16 @@ package fr.upstls3.projetstri;
  */
 public class Salle {
 
+    private int numeroSalle;
     private String nom;
     private int nbPosteInstalles;
     private int nbPostePossibles;
     private String emplacement;
     
     
-    public Salle (String nom, String emplacement, int nbPostePossi, int nbPosteIns)
+    public Salle (int numeroSalle,String nom, String emplacement, int nbPostePossi, int nbPosteIns)
     {
+        this.numeroSalle = numeroSalle;
         this.nom = nom;
         this.emplacement = emplacement;
         this.nbPostePossibles = nbPostePossi;
@@ -26,6 +28,15 @@ public class Salle {
         
     }
 
+    public int getNumeroSalle() {
+        return numeroSalle;
+    }
+
+    public void setNumeroSalle(int numeroSalle) {
+        this.numeroSalle = numeroSalle;
+    }
+
+    
     public String getEmplacement() {
         return emplacement;
     }

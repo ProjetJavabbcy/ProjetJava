@@ -22,22 +22,25 @@ public class SalleModel extends DefaultTableModel {
 
     @Override
     public int getColumnCount() {
-        return 4;
+        return 5;
     }
 
     @Override
     public String getColumnName(int column) {
        if (column == 0) {
-            return "Nom salle";
+            return "Numero salle";
         } 
        else if (column ==1){
-            return "Emplacement";
+            return "Nom Salle";
         }
         else if (column ==2){
-            return "Nombre de pistes possibles";
+            return "Emplacement";
         }
         else if (column ==3){
-            return "Nombre de postes installés";
+            return "Nombre postes possibles";
+        }
+         else if (column ==4){
+            return "Nombre postes installes";
         }
         else {
         return null;   
@@ -49,15 +52,18 @@ public class SalleModel extends DefaultTableModel {
     @Override
     public Object getValueAt(int row, int column) {
         if (column == 0) {
-            return k.get(row).getNom();
+            return k.get(row).getNumeroSalle();
         } 
         else if (column == 1){
-            return k.get(row).getEmplacement();
+            return k.get(row).getNom();
         }
         else if (column == 2){
-            return k.get(row).getNbPostePossibles();
+            return k.get(row).getEmplacement();
         }
         else if (column == 3){
+            return k.get(row).getNbPostePossibles();
+        }
+        else if (column == 4){
             return k.get(row).getNbPosteInstalles();
         }
         
