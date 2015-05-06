@@ -67,12 +67,12 @@
                                   <Component id="champ_emplacement_salle" alignment="1" min="-2" pref="94" max="-2" attributes="0"/>
                                   <Component id="label_emplacement_salle" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="640" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="label_poste_possible" min="-2" max="-2" attributes="0"/>
-                                  <Component id="champ_poste_possible" min="-2" pref="80" max="-2" attributes="0"/>
+                                  <Component id="champ_poste_possible" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
+                                  <Component id="label_poste_possible" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="label_poste_installe" min="-2" max="-2" attributes="0"/>
                                   <Component id="champ_poste_installe" min="-2" pref="80" max="-2" attributes="0"/>
@@ -150,7 +150,7 @@
                       <Component id="bouton_annuler_equipement" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="591" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -163,21 +163,21 @@
               <Component id="tableau_Salle" min="-2" pref="107" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="label_ajout_salle" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="label_nom_salle" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="label_emplacement_salle" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="label_poste_possible" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="label_poste_installe" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="label_num_salle" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="label_poste_possible" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="champ_salle" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="champ_emplacement_salle" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="champ_poste_possible" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="champ_poste_installe" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="champ_num_salle" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="champ_poste_installe" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -217,7 +217,7 @@
                   <Component id="bouton_valider_equipement" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="bouton_annuler_equipement" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="207" max="32767" attributes="0"/>
+              <EmptySpace pref="202" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
