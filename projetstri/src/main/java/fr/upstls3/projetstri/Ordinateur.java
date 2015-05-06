@@ -15,8 +15,9 @@ public class Ordinateur extends Equipement {
     private String type;
     
     
-    public Ordinateur(String carteGraphique,String type) {
-        super();
+    public Ordinateur(int id_equipement,String cpu, int ram, String os, boolean etat, String adresseMAC, int disque,String carteGraphique,String type) 
+    {
+        super(id_equipement, cpu,  ram,  os,  etat,  adresseMAC,  disque);
         this.carteGraphique = carteGraphique;
         this.type = type;
         
