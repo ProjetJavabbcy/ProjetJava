@@ -102,14 +102,14 @@
                               <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="label_nom_equipement" min="-2" max="-2" attributes="0"/>
+                                      <Component id="label_id_equipement" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                                       <Component id="label_type" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                                       <Component id="label_cpu" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="champ_nom_equipement" min="-2" pref="70" max="-2" attributes="0"/>
+                                      <Component id="champ_id_equipement" min="-2" pref="70" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="ComboBox_type" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -128,16 +128,21 @@
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="label_carte_graphique" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="label_os" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
                                       <Component id="champ_carte_graphique" min="-2" pref="85" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="champ_os" min="-2" pref="75" max="-2" attributes="0"/>
                                   </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="label_carte_graphique" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="label_os" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="label_adresse_mac" min="-2" max="-2" attributes="0"/>
+                                  <Component id="champ_adresse_mac" min="-2" pref="70" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="tableau_Equipement" alignment="0" min="-2" pref="628" max="-2" attributes="0"/>
@@ -150,7 +155,7 @@
                       <Component id="bouton_annuler_equipement" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="591" max="32767" attributes="0"/>
+              <EmptySpace pref="535" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -194,23 +199,25 @@
               <Component id="label_ajout_equipement" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="label_nom_equipement" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="label_id_equipement" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="label_type" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="label_cpu" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="label_ram" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="label_disque" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="label_carte_graphique" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="label_os" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="label_adresse_mac" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="champ_nom_equipement" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="champ_id_equipement" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="ComboBox_type" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="champ_cpu" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="champ_ram" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="champ_disque" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="champ_carte_graphique" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="champ_os" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="champ_adresse_mac" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -338,11 +345,11 @@
         <Property name="text" type="java.lang.String" value="Ajouter Equipement :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="champ_nom_equipement">
+    <Component class="javax.swing.JTextField" name="champ_id_equipement">
     </Component>
-    <Component class="javax.swing.JLabel" name="label_nom_equipement">
+    <Component class="javax.swing.JLabel" name="label_id_equipement">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Nom  :"/>
+        <Property name="text" type="java.lang.String" value="ID  :"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="label_type">
@@ -353,11 +360,10 @@
     <Component class="javax.swing.JComboBox" name="ComboBox_type">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
+          <StringArray count="3">
+            <StringItem index="0" value="Ordinateur"/>
+            <StringItem index="1" value="Tablette"/>
+            <StringItem index="2" value="Routeur"/>
           </StringArray>
         </Property>
       </Properties>
@@ -469,5 +475,12 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JLabel" name="label_adresse_mac">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="@Mac :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="champ_adresse_mac">
+    </Component>
   </SubComponents>
 </Form>
