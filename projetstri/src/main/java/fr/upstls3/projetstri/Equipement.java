@@ -45,7 +45,11 @@ public class Equipement {
     public String getOs() {
         return os;
     }
-
+    
+    public boolean getEtat(){
+        return etat;
+    }
+    
     public String getAdresseMAC() {
         return adresseMAC;
     }
