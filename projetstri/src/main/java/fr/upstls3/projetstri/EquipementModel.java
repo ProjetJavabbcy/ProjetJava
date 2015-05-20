@@ -71,6 +71,9 @@ public class EquipementModel extends DefaultTableModel {
         return "error";
     }
 
+        public void addItem(Equipement e) {
+        a.add(e);
+    }
     
     
     

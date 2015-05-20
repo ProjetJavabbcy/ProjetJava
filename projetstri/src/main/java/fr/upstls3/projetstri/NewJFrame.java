@@ -4,6 +4,8 @@
  */
 package fr.upstls3.projetstri;
 
+import javax.swing.JComboBox;
+
 /**
  *
  * @author 21408116
@@ -71,9 +73,21 @@ public class NewJFrame extends javax.swing.JFrame {
         tableEquipement = new javax.swing.JTable();
         label_adresse_mac = new javax.swing.JLabel();
         champ_adresse_mac = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
+        label_etat = new javax.swing.JLabel();
+        Checkbox_allume = new javax.swing.JCheckBox();
+        Checkbox_eteint = new javax.swing.JCheckBox();
+        ComboBox_Mobilite = new javax.swing.JComboBox();
+        label_mobilite = new javax.swing.JLabel();
+        label_nombre_GE = new javax.swing.JLabel();
+        champ_nombre_GE = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -140,6 +154,11 @@ public class NewJFrame extends javax.swing.JFrame {
         label_type.setText("Type : ");
 
         ComboBox_type.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ordinateur", "Tablette", "Routeur" }));
+        ComboBox_type.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ComboBox_typeItemStateChanged(evt);
+            }
+        });
         ComboBox_type.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboBox_typeActionPerformed(evt);
@@ -147,6 +166,12 @@ public class NewJFrame extends javax.swing.JFrame {
         });
 
         label_cpu.setText("CPU : ");
+
+        champ_cpu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                champ_cpuActionPerformed(evt);
+            }
+        });
 
         label_ram.setText("RAM :");
 
@@ -184,22 +209,47 @@ public class NewJFrame extends javax.swing.JFrame {
         });
 
         bouton_annuler_equipement.setText("Annuler");
+        bouton_annuler_equipement.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bouton_annuler_equipementActionPerformed(evt);
+            }
+        });
 
         tableEquipement.setModel(EquipementModel);
         tableau_Equipement.setViewportView(tableEquipement);
 
         label_adresse_mac.setText("@Mac :");
 
-        jLabel1.setText("Etat :");
+        label_etat.setText("Etat :");
 
-        jCheckBox1.setText("Allumé");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        Checkbox_allume.setText("Allumé");
+        Checkbox_allume.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                Checkbox_allumeActionPerformed(evt);
             }
         });
 
-        jCheckBox2.setText("Eteint");
+        Checkbox_eteint.setText("Eteint");
+
+        ComboBox_Mobilite.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Portable", "Fixe" }));
+
+        label_mobilite.setText("Mobilité :");
+
+        label_nombre_GE.setText("Nombre Ports GE :");
+
+        jLabel4.setText("Nombre Ports LAN :");
+
+        jLabel5.setText("Taille Ecran (en pouces) :");
+
+        jLabel6.setText("Marque : ");
+
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setText("Modèle :");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -250,54 +300,80 @@ public class NewJFrame extends javax.swing.JFrame {
                                 .addGap(3, 3, 3)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(label_id_equipement)
-                                        .addGap(59, 59, 59)
-                                        .addComponent(label_type)
-                                        .addGap(44, 44, 44)
-                                        .addComponent(label_cpu))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jTextField3))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(champ_id_equipement, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(label_type)
+                                                    .addComponent(ComboBox_type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(label_id_equipement))
+                                        .addGap(8, 8, 8)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(label_cpu)
+                                                .addGap(44, 44, 44)
+                                                .addComponent(label_ram)
+                                                .addGap(49, 49, 49)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(champ_disque, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(label_disque))
+                                                .addGap(18, 18, 18)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addComponent(champ_carte_graphique, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(18, 18, 18)
+                                                        .addComponent(champ_os, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addComponent(label_carte_graphique)
+                                                        .addGap(18, 18, 18)
+                                                        .addComponent(label_os)))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addComponent(champ_adresse_mac, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(18, 18, 18)
+                                                        .addComponent(Checkbox_allume)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(Checkbox_eteint))
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addComponent(label_adresse_mac)
+                                                        .addGap(60, 60, 60)
+                                                        .addComponent(label_etat)))
+                                                .addGap(18, 18, 18)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(label_mobilite)
+                                                    .addComponent(ComboBox_Mobilite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(25, 25, 25)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(label_nombre_GE)
+                                                    .addComponent(champ_nombre_GE, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(18, 18, 18)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel4)
+                                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(25, 25, 25)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel6)
+                                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(18, 18, 18)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jLabel7)))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(champ_ram, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(champ_cpu, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(champ_id_equipement, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(ComboBox_type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(champ_cpu, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(24, 24, 24)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(label_ram)
-                                    .addComponent(champ_ram, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(champ_disque, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(label_disque))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(champ_carte_graphique, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(champ_os, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(label_carte_graphique)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(label_os)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(label_adresse_mac)
-                                        .addGap(60, 60, 60)
-                                        .addComponent(jLabel1))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(champ_adresse_mac, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jCheckBox1)
+                                        .addComponent(bouton_valider_equipement)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jCheckBox2))))
-                            .addComponent(tableau_Equipement, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(bouton_valider_equipement)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bouton_annuler_equipement)))
-                .addContainerGap(407, Short.MAX_VALUE))
+                                        .addComponent(bouton_annuler_equipement))))
+                            .addComponent(tableau_Equipement, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(154, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -344,7 +420,10 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(label_carte_graphique)
                     .addComponent(label_os)
                     .addComponent(label_adresse_mac)
-                    .addComponent(jLabel1))
+                    .addComponent(label_etat)
+                    .addComponent(label_mobilite)
+                    .addComponent(label_nombre_GE)
+                    .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(champ_id_equipement, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -355,13 +434,26 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(champ_carte_graphique, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(champ_os, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(champ_adresse_mac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox1)
-                    .addComponent(jCheckBox2))
+                    .addComponent(Checkbox_allume)
+                    .addComponent(Checkbox_eteint)
+                    .addComponent(ComboBox_Mobilite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(champ_nombre_GE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bouton_valider_equipement)
                     .addComponent(bouton_annuler_equipement))
-                .addContainerGap(200, Short.MAX_VALUE))
+                .addContainerGap(149, Short.MAX_VALUE))
         );
 
         pack();
@@ -373,6 +465,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void ComboBox_typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBox_typeActionPerformed
         // TODO add your handling code here:
+         
     }//GEN-LAST:event_ComboBox_typeActionPerformed
 
     private void champ_carte_graphiqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_champ_carte_graphiqueActionPerformed
@@ -411,17 +504,50 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void bouton_valider_equipementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouton_valider_equipementActionPerformed
         // TODO add your handling code here:
+        boolean a = true;
         int i = Integer.parseInt(champ_id_equipement.getText()) ;
         int j = Integer.parseInt(champ_disque.getText()) ;
         int k = Integer.parseInt(champ_ram.getText()) ;
-       // EquipementModel.addItem(new Equipement(i,champ_cpu.getText(),k, champ_os.getText(), j, k));
+        EquipementModel.addItem(new Equipement(i,champ_cpu.getText(),k, champ_os.getText(),a, champ_adresse_mac.getText(), j));
         salleModel.refresh();
     }//GEN-LAST:event_bouton_valider_equipementActionPerformed
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void Checkbox_allumeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Checkbox_allumeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    }//GEN-LAST:event_Checkbox_allumeActionPerformed
 
+    private void bouton_annuler_equipementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouton_annuler_equipementActionPerformed
+        // TODO add your handling code here:
+        champ_id_equipement.setText("");
+        champ_cpu.setText("");
+        champ_os.setText("");
+        champ_adresse_mac.setText("");
+        champ_disque.setText("");
+    }//GEN-LAST:event_bouton_annuler_equipementActionPerformed
+
+    private void ComboBox_typeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ComboBox_typeItemStateChanged
+        // TODO add your handling code here:
+        JComboBox cb = (JComboBox)evt.getSource();
+        String type = cb.getSelectedItem();
+        updateLabel(type);
+    }//GEN-LAST:event_ComboBox_typeItemStateChanged
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void champ_cpuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_champ_cpuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_champ_cpuActionPerformed
+
+    private void updateLabel(String ptype){
+    
+    String type;
+    type = ptype;
+    if(type == "Routeur"){
+        champ_carte_graphique.disable();
+    }
+    }
     /**
      * @param args the command line arguments
      */
@@ -457,6 +583,9 @@ public class NewJFrame extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox Checkbox_allume;
+    private javax.swing.JCheckBox Checkbox_eteint;
+    private javax.swing.JComboBox ComboBox_Mobilite;
     private javax.swing.JComboBox ComboBox_type;
     private javax.swing.JButton bouton_annuler_equipement;
     private javax.swing.JButton bouton_annuler_salle;
@@ -468,18 +597,24 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField champ_disque;
     private javax.swing.JTextField champ_emplacement_salle;
     private javax.swing.JTextField champ_id_equipement;
+    private javax.swing.JTextField champ_nombre_GE;
     private javax.swing.JTextField champ_num_salle;
     private javax.swing.JTextField champ_os;
     private javax.swing.JTextField champ_poste_installe;
     private javax.swing.JTextField champ_poste_possible;
     private javax.swing.JTextField champ_ram;
     private javax.swing.JTextField champ_salle;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
     private javax.swing.JLabel label_adresse_mac;
     private javax.swing.JLabel label_ajout_equipement;
     private javax.swing.JLabel label_ajout_salle;
@@ -488,8 +623,11 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel label_disque;
     private javax.swing.JLabel label_emplacement_salle;
     private javax.swing.JLabel label_equipement;
+    private javax.swing.JLabel label_etat;
     private javax.swing.JLabel label_id_equipement;
+    private javax.swing.JLabel label_mobilite;
     private javax.swing.JLabel label_nom_salle;
+    private javax.swing.JLabel label_nombre_GE;
     private javax.swing.JLabel label_num_salle;
     private javax.swing.JLabel label_os;
     private javax.swing.JLabel label_poste_installe;
