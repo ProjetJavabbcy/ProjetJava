@@ -22,7 +22,16 @@ public class Tablette extends Equipement {
         this.marque = marque;
         this.modele = modele;
     }
-            
-            
     
+    public int getTailleEcran() {
+        return this.tailleEcran;
+    }
+    
+    public String getMarque () {
+        return this.marque;
+    }
+           
+    public String getModel() {
+        return this.modele;
+    }
 }

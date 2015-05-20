@@ -19,8 +19,14 @@ public class Ordinateur extends Equipement {
     {
         super(id_equipement, cpu,  ram,  os,  etat,  adresseMAC,  disque);
         this.carteGraphique = carteGraphique;
-        this.type = type;
-        
+        this.type = type;   
     }
     
+    public String getCarteGraphique() {
+        return this.carteGraphique;
+    }
+    
+    public String getType() {
+        return this.type;
+    }   
 }

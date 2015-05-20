@@ -10,7 +10,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author 21408116
+ * @author Selim 
  */
 public class SalleModel extends DefaultTableModel {
 
