@@ -104,8 +104,8 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="jLabel5" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jTextField3" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="label_taille_ecran" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="champ_taille_ecran" alignment="0" max="32767" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="champ_id_equipement" min="-2" pref="43" max="-2" attributes="0"/>
@@ -164,24 +164,24 @@
                                               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="label_nombre_GE" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="champ_nombre_GE" min="-2" pref="53" max="-2" attributes="0"/>
+                                                  <Component id="champ_nb_GE" min="-2" pref="53" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jTextField2" min="-2" pref="51" max="-2" attributes="0"/>
+                                                  <Component id="label_nombre_LAN" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="champ_nb_LAN" min="-2" pref="51" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jTextField4" min="-2" pref="57" max="-2" attributes="0"/>
+                                                  <Component id="label_marque" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="champ_marque" min="-2" pref="57" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jTextField5" min="-2" pref="60" max="-2" attributes="0"/>
-                                                  <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="champ_modele" min="-2" pref="60" max="-2" attributes="0"/>
+                                                  <Component id="label_modele" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
@@ -257,7 +257,7 @@
                   <Component id="label_etat" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="label_mobilite" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="label_nombre_GE" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="label_nombre_LAN" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -272,20 +272,20 @@
                   <Component id="Checkbox_allume" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="Checkbox_eteint" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="ComboBox_Mobilite" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="champ_nombre_GE" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="champ_nb_GE" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="champ_nb_LAN" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel7" alignment="1" min="-2" pref="14" max="-2" attributes="0"/>
-                  <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="label_taille_ecran" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="label_modele" alignment="1" min="-2" pref="14" max="-2" attributes="0"/>
+                  <Component id="label_marque" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="champ_taille_ecran" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="champ_marque" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="champ_modele" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -556,38 +556,38 @@
         <Property name="text" type="java.lang.String" value="Nombre Ports GE :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="champ_nombre_GE">
+    <Component class="javax.swing.JTextField" name="champ_nb_GE">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
+    <Component class="javax.swing.JLabel" name="label_nombre_LAN">
       <Properties>
         <Property name="text" type="java.lang.String" value="Nombre Ports LAN :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField2">
+    <Component class="javax.swing.JTextField" name="champ_nb_LAN">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel5">
+    <Component class="javax.swing.JLabel" name="label_taille_ecran">
       <Properties>
         <Property name="text" type="java.lang.String" value="Taille Ecran (en pouces) :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField3">
+    <Component class="javax.swing.JTextField" name="champ_taille_ecran">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel6">
+    <Component class="javax.swing.JLabel" name="label_marque">
       <Properties>
         <Property name="text" type="java.lang.String" value="Marque : "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField4">
+    <Component class="javax.swing.JTextField" name="champ_marque">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField4ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="champ_marqueActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel7">
+    <Component class="javax.swing.JLabel" name="label_modele">
       <Properties>
         <Property name="text" type="java.lang.String" value="Mod&#xe8;le :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField5">
+    <Component class="javax.swing.JTextField" name="champ_modele">
     </Component>
   </SubComponents>
 </Form>

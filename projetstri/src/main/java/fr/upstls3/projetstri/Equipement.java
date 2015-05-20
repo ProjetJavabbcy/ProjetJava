@@ -18,10 +18,14 @@ public class Equipement {
     public boolean etat;
     public String adresseMAC;
     public int disque;
+    public String marque;
+    public String modele;
   
-    public Equipement (int id_equipement,String cpu, int ram, String os, boolean etat, String adresseMAC, int disque)
+    public Equipement (int id_equipement,String marque,String modele,String cpu, int ram, String os, boolean etat, String adresseMAC, int disque)
     {
         this.id_equipement = id_equipement;
+        this.marque = marque;
+        this.modele = modele;
         this.cpu = cpu;
         this.ram = ram;
         this.os = os;
