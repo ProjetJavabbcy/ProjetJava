@@ -10,7 +10,8 @@ package fr.upstls3.projetstri;
  */
 public class NewJFrame extends javax.swing.JFrame {
 
-    SalleModel salleModel = new SalleModel();;
+    SalleModel salleModel = new SalleModel();
+    EquipementModel EquipementModel = new EquipementModel();
 
     /**
      * Creates new form NewJFrame
@@ -70,6 +71,9 @@ public class NewJFrame extends javax.swing.JFrame {
         tableEquipement = new javax.swing.JTable();
         label_adresse_mac = new javax.swing.JLabel();
         champ_adresse_mac = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jCheckBox2 = new javax.swing.JCheckBox();
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -173,13 +177,29 @@ public class NewJFrame extends javax.swing.JFrame {
         });
 
         bouton_valider_equipement.setText("Valider");
+        bouton_valider_equipement.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bouton_valider_equipementActionPerformed(evt);
+            }
+        });
 
         bouton_annuler_equipement.setText("Annuler");
 
-        tableEquipement.setModel(salleModel);
+        tableEquipement.setModel(EquipementModel);
         tableau_Equipement.setViewportView(tableEquipement);
 
         label_adresse_mac.setText("@Mac :");
+
+        jLabel1.setText("Etat :");
+
+        jCheckBox1.setText("Allumé");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+
+        jCheckBox2.setText("Eteint");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -261,15 +281,23 @@ public class NewJFrame extends javax.swing.JFrame {
                                         .addComponent(label_os)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(label_adresse_mac)
-                                    .addComponent(champ_adresse_mac, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(label_adresse_mac)
+                                        .addGap(60, 60, 60)
+                                        .addComponent(jLabel1))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(champ_adresse_mac, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jCheckBox1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jCheckBox2))))
                             .addComponent(tableau_Equipement, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(bouton_valider_equipement)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(bouton_annuler_equipement)))
-                .addContainerGap(535, Short.MAX_VALUE))
+                .addContainerGap(407, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -315,7 +343,8 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(label_disque)
                     .addComponent(label_carte_graphique)
                     .addComponent(label_os)
-                    .addComponent(label_adresse_mac))
+                    .addComponent(label_adresse_mac)
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(champ_id_equipement, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -325,12 +354,14 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(champ_disque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(champ_carte_graphique, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(champ_os, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(champ_adresse_mac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(champ_adresse_mac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox1)
+                    .addComponent(jCheckBox2))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bouton_valider_equipement)
                     .addComponent(bouton_annuler_equipement))
-                .addContainerGap(202, Short.MAX_VALUE))
+                .addContainerGap(200, Short.MAX_VALUE))
         );
 
         pack();
@@ -377,6 +408,19 @@ public class NewJFrame extends javax.swing.JFrame {
         champ_poste_possible.setText("");
         champ_poste_installe.setText("");
     }//GEN-LAST:event_bouton_annuler_salleActionPerformed
+
+    private void bouton_valider_equipementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouton_valider_equipementActionPerformed
+        // TODO add your handling code here:
+        int i = Integer.parseInt(champ_id_equipement.getText()) ;
+        int j = Integer.parseInt(champ_disque.getText()) ;
+        int k = Integer.parseInt(champ_ram.getText()) ;
+       // EquipementModel.addItem(new Equipement(i,champ_cpu.getText(),k, champ_os.getText(), j, k));
+        salleModel.refresh();
+    }//GEN-LAST:event_bouton_valider_equipementActionPerformed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -430,6 +474,9 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField champ_poste_possible;
     private javax.swing.JTextField champ_ram;
     private javax.swing.JTextField champ_salle;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable2;
