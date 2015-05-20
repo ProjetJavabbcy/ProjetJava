@@ -7,7 +7,7 @@ package fr.upstls3.projetstri;
 
 /**
  *
- * @author Ludovic
+ * @author Selim
  */
 public class Routeur extends Equipement{
     
@@ -18,9 +18,15 @@ public class Routeur extends Equipement{
         super(id_equipement, cpu,  ram,  os,  etat,  adresseMAC,  disque);
         this.nbPortsGoEthernet = nbPortsGoEthernet;
         this.nbPortsLAN = nbPortsLAN;
+    }
     
-}
+    public int getNbPortsGoEthernet (){
+        return this.nbPortsGoEthernet;
+    }
     
+    public int getnbPortsLAN() {
+        return this.nbPortsLAN;
+    }
     
     
 }

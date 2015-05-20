@@ -13,7 +13,7 @@ import java.sql.Statement;
 
 /**
  *
- * @author Cyrilou
+ * @author Cyril
  */
 public class SauverEnBase {
     public static void main(String[] args) {
