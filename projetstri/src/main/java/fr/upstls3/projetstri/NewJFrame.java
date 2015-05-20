@@ -554,14 +554,21 @@ public class NewJFrame extends javax.swing.JFrame {
    
     }
     if(type == "Ordinateur"){
-        champ_nb_LAN.disable();
+        label_nombre_GE.disable();
         champ_nb_GE.disable();
+        label_nombre_LAN.disable();
+        champ_nb_LAN.disable();
+        label_taille_ecran.disable();
         champ_taille_ecran.disable();
     }
      if(type == "Tablette"){
+        label_mobilite.disable();
         ComboBox_Mobilite.disable();
+        label_nombre_LAN.disable();
         champ_nb_LAN.disable();
+        label_nombre_GE.disable();
         champ_nb_GE.disable();
+        label_carte_graphique.disable();
         champ_carte_graphique.disable();
     }
     }
