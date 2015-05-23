@@ -28,14 +28,10 @@ public class SauverEnBase {
 
 			// Etape 1 : Chargement du driver
 			Class.forName("com.mysql.jdbc.Driver");
-
 			// Etape 2 : récupération de la connexion
 			cn = DriverManager.getConnection(url, login, passwd);
-
 			// Etape 3 : Création d'un statement
 			st = cn.createStatement();
-
-			/*String sql = "INSERT INTO `Ordinateur` (`Id_ordinateur`,`num_salle`) VALUES ('1')";*/
                         String sql = "INSERT INTO `Salle` (`num_salle`) VALUES ('1')";
 			// Etape 4 : exécution requête
 			st.executeUpdate(sql);

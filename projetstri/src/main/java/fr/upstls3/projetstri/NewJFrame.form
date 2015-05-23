@@ -90,7 +90,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="label_ajout_salle" min="-2" max="-2" attributes="0"/>
                           <Component id="label_salle" min="-2" max="-2" attributes="0"/>
-                          <Component id="tableau_Salle" alignment="0" min="-2" pref="628" max="-2" attributes="0"/>
+                          <Component id="tableau_Salle" alignment="0" min="-2" pref="827" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -117,13 +117,38 @@
                                           </Group>
                                           <Component id="label_id_equipement" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Component id="label_cpu" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                                              <Component id="label_ram" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="label_marque" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="champ_marque" min="-2" pref="57" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="champ_modele" min="-2" pref="60" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Component id="label_modele" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                                                      <Component id="label_cpu" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                                                      <Component id="label_ram" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="champ_cpu" min="-2" pref="60" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="champ_ram" min="-2" pref="60" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="champ_disque" alignment="0" min="-2" pref="60" max="-2" attributes="0"/>
                                                   <Component id="label_disque" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -172,23 +197,6 @@
                                                   <Component id="champ_nb_LAN" min="-2" pref="51" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="label_marque" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="champ_marque" min="-2" pref="57" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="champ_modele" min="-2" pref="60" max="-2" attributes="0"/>
-                                                  <Component id="label_modele" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="champ_ram" min="-2" pref="60" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="champ_cpu" min="-2" pref="60" max="-2" attributes="0"/>
-                                          </Group>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -198,7 +206,7 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <Component id="tableau_Equipement" alignment="0" min="-2" pref="628" max="-2" attributes="0"/>
+                          <Component id="tableau_Equipement" alignment="0" min="-2" pref="827" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -264,7 +272,6 @@
                   <Component id="champ_id_equipement" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="ComboBox_type" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="champ_cpu" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="champ_ram" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="champ_disque" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="champ_carte_graphique" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="champ_os" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -274,12 +281,15 @@
                   <Component id="ComboBox_Mobilite" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="champ_nb_GE" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="champ_nb_LAN" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="champ_ram" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="label_taille_ecran" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="label_modele" alignment="1" min="-2" pref="14" max="-2" attributes="0"/>
-                  <Component id="label_marque" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="label_taille_ecran" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="label_marque" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -292,7 +302,7 @@
                   <Component id="bouton_valider_equipement" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="bouton_annuler_equipement" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="149" max="32767" attributes="0"/>
+              <EmptySpace pref="26" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
