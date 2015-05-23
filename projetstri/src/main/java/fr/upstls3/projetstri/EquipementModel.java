@@ -74,7 +74,12 @@ public class EquipementModel extends DefaultTableModel {
         public void addItem(Equipement e) {
         a.add(e);
     }
+        
+        public void refresh() {
+        fireTableStructureChanged();
+    }
     
+     
     
     
     

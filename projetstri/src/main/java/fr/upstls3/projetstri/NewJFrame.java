@@ -22,6 +22,8 @@ public class NewJFrame extends javax.swing.JFrame {
         initComponents();
         
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -153,7 +155,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         label_type.setText("Type : ");
 
-        ComboBox_type.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ordinateur", "Tablette", "Routeur" }));
+        ComboBox_type.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Ordinateur", "Tablette", "Routeur" }));
         ComboBox_type.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 ComboBox_typeItemStateChanged(evt);
@@ -465,7 +467,9 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void ComboBox_typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBox_typeActionPerformed
         // TODO add your handling code here:
-         
+        JComboBox cb = (JComboBox)evt.getSource();
+        String type = (String)cb.getSelectedItem();
+        updateLabel(type);
     }//GEN-LAST:event_ComboBox_typeActionPerformed
 
     private void champ_carte_graphiqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_champ_carte_graphiqueActionPerformed
@@ -508,8 +512,8 @@ public class NewJFrame extends javax.swing.JFrame {
         int i = Integer.parseInt(champ_id_equipement.getText()) ;
         int j = Integer.parseInt(champ_disque.getText()) ;
         int k = Integer.parseInt(champ_ram.getText()) ;
-        EquipementModel.addItem(new Equipement(i,champ_cpu.getText(),k, champ_os.getText(),a, champ_adresse_mac.getText(), j));
-        salleModel.refresh();
+        EquipementModel.addItem(new Equipement(i,champ_marque.getText(),champ_modele.getText(), champ_cpu.getText(),k, champ_os.getText(),a, champ_adresse_mac.getText(), j));
+        EquipementModel.refresh();
     }//GEN-LAST:event_bouton_valider_equipementActionPerformed
 
     private void Checkbox_allumeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Checkbox_allumeActionPerformed
@@ -528,7 +532,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private void ComboBox_typeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ComboBox_typeItemStateChanged
         // TODO add your handling code here:
         JComboBox cb = (JComboBox)evt.getSource();
-        String type = cb.getSelectedItem();
+        String type = (String)cb.getSelectedItem();
         updateLabel(type);
     }//GEN-LAST:event_ComboBox_typeItemStateChanged
 
@@ -540,36 +544,73 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_champ_cpuActionPerformed
 
-    private void updateLabel(String ptype){
+    public void updateLabel(String ptype){
     
     String type;
     type = ptype;
+    
     if(type == "Routeur"){
-        champ_carte_graphique.disable();
-        label_carte_graphique.disable();
-        ComboBox_Mobilite.disable();
-        label_mobilite.disable();
-        label_taille_ecran.disable();
-        champ_taille_ecran.disable();
-   
+        champ_carte_graphique.setEnabled(false);
+        label_carte_graphique.setEnabled(false);
+        ComboBox_Mobilite.setEnabled(false);
+        label_mobilite.setEnabled(false);
+        label_taille_ecran.setEnabled(false);
+        champ_taille_ecran.setEnabled(false);
+        
+        label_nombre_GE.setEnabled(true);
+        champ_nb_GE.setEnabled(true);
+        label_nombre_LAN.setEnabled(true);
+        champ_nb_LAN.setEnabled(true);
+        label_nombre_LAN.setEnabled(true);
+        champ_nb_LAN.setEnabled(true);
+        label_nombre_GE.setEnabled(true);
+        champ_nb_GE.setEnabled(true);
+       
     }
-    if(type == "Ordinateur"){
-        label_nombre_GE.disable();
-        champ_nb_GE.disable();
-        label_nombre_LAN.disable();
-        champ_nb_LAN.disable();
-        label_taille_ecran.disable();
-        champ_taille_ecran.disable();
+     if(type == "Ordinateur"){
+        label_nombre_GE.setEnabled(false);
+        champ_nb_GE.setEnabled(false);
+        label_nombre_LAN.setEnabled(false);
+        champ_nb_LAN.setEnabled(false);
+        label_taille_ecran.setEnabled(false);
+        champ_taille_ecran.setEnabled(false);
+        
+        champ_carte_graphique.setEnabled(true);
+        label_carte_graphique.setEnabled(true);
+        ComboBox_Mobilite.setEnabled(true);
+        label_mobilite.setEnabled(true);
+       
+        
+   
+        
     }
      if(type == "Tablette"){
-        label_mobilite.disable();
-        ComboBox_Mobilite.disable();
-        label_nombre_LAN.disable();
-        champ_nb_LAN.disable();
-        label_nombre_GE.disable();
-        champ_nb_GE.disable();
-        label_carte_graphique.disable();
-        champ_carte_graphique.disable();
+        label_mobilite.setEnabled(false);
+        ComboBox_Mobilite.setEnabled(false);
+        label_nombre_LAN.setEnabled(false);
+        champ_nb_LAN.setEnabled(false);
+        label_nombre_GE.setEnabled(false);
+        champ_nb_GE.setEnabled(false);
+        label_carte_graphique.setEnabled(false);
+        champ_carte_graphique.setEnabled(false);
+        
+        
+        
+    }
+    if(type == ""){
+        label_mobilite.setEnabled(true);
+        ComboBox_Mobilite.setEnabled(true);
+        label_nombre_LAN.setEnabled(true);
+        champ_nb_LAN.setEnabled(true);
+        label_nombre_GE.setEnabled(true);
+        champ_nb_GE.setEnabled(true);
+        label_carte_graphique.setEnabled(true);
+        champ_carte_graphique.setEnabled(true);
+        label_taille_ecran.setEnabled(true);
+        champ_taille_ecran.setEnabled(true);
+        ComboBox_Mobilite.setEnabled(true);
+        label_mobilite.setEnabled(true);
+        
     }
     }
     /**
