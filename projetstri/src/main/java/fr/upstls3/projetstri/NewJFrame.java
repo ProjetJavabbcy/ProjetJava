@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JCheckBox;
 import javax.swing.JTextArea;
 
 /**
@@ -21,6 +22,9 @@ public class NewJFrame extends javax.swing.JFrame {
     String url = "jdbc:mysql://151.80.140.253/projet_java_bd";
     String login = "java";
     String passwd = "projetjava3166";
+    String type;
+    String mobilite;
+    String etat;
     SalleModel salleModel = new SalleModel();
     EquipementModel EquipementModel = new EquipementModel();
     
@@ -127,6 +131,8 @@ public class NewJFrame extends javax.swing.JFrame {
         text_area_salle = new javax.swing.JTextArea();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        label_numero_salle_equipement = new javax.swing.JLabel();
+        champ_numero_salle_equipement = new javax.swing.JTextField();
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -265,7 +271,7 @@ public class NewJFrame extends javax.swing.JFrame {
         ComboBox_Mobilite.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Portable", "Fixe" }));
         ComboBox_Mobilite.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ComboBox_MobiliteActionPerformed(evt);
+                ComboBox_mobiliteItemStateChanged(evt);
             }
         });
 
@@ -300,6 +306,14 @@ public class NewJFrame extends javax.swing.JFrame {
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
+
+        label_numero_salle_equipement.setText("Numéro salle :");
+
+        champ_numero_salle_equipement.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                champ_numero_salle_equipementActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -397,7 +411,11 @@ public class NewJFrame extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(label_nombre_LAN)
-                                    .addComponent(champ_nb_LAN, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(champ_nb_LAN, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(label_numero_salle_equipement, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(champ_numero_salle_equipement)))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(label_ajout_equipement)
                                 .addGroup(layout.createSequentialGroup()
@@ -422,7 +440,7 @@ public class NewJFrame extends javax.swing.JFrame {
                                             .addComponent(bouton_annuler_equipement))))
                                 .addComponent(label_equipement)
                                 .addComponent(jScrollPane1)))))
-                .addContainerGap(459, Short.MAX_VALUE))
+                .addContainerGap(438, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -471,7 +489,8 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(label_etat)
                     .addComponent(label_mobilite)
                     .addComponent(label_nombre_GE)
-                    .addComponent(label_nombre_LAN))
+                    .addComponent(label_nombre_LAN)
+                    .addComponent(label_numero_salle_equipement))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ComboBox_type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -485,7 +504,8 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(ComboBox_Mobilite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(champ_nb_GE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(champ_nb_LAN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(champ_ram, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(champ_ram, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(champ_numero_salle_equipement, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(label_modele, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -514,8 +534,10 @@ public class NewJFrame extends javax.swing.JFrame {
     private void ComboBox_typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBox_typeActionPerformed
         // TODO add your handling code here:
         JComboBox cb = (JComboBox)evt.getSource();
-        String type = (String)cb.getSelectedItem();
-        updateLabel(type);
+        String type_combo = (String)cb.getSelectedItem();
+        updateLabel(type_combo);
+        type=type_combo;
+        
     }//GEN-LAST:event_ComboBox_typeActionPerformed
 
     private void champ_carte_graphiqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_champ_carte_graphiqueActionPerformed
@@ -541,7 +563,7 @@ public class NewJFrame extends javax.swing.JFrame {
 			cn = DriverManager.getConnection(url, login, passwd);
 			st = cn.createStatement();
                         String sql = "INSERT INTO Salle(num_salle,nom_salle,emplacement_salle,nb_poste_possible,nb_poste_installe) "
-                                + "VALUES("+num_salle+",'"+nom_salle+"','"+emplacement+"',"+poste_possible+","+poste_installe+")";
+                                + "VALUES("+num_salle+",'"+nom_salle+"','"+emplacement+"',"+poste_possible+","+poste_installe+");";
                         st.executeUpdate(sql);
                         sql = "SELECT * FROM Salle;";
                         ResultSet rs = st.executeQuery(sql);
@@ -592,28 +614,22 @@ public class NewJFrame extends javax.swing.JFrame {
     private void bouton_valider_equipementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouton_valider_equipementActionPerformed
         // TODO add your handling code here:
         String cpu = champ_cpu.getText();
-        String ram = champ_ram.getText();
+        int ram = Integer.parseInt(champ_ram.getText());
         int disque = Integer.parseInt(champ_disque.getText());
-        String carte_graphique = champ_carte_graphique.getText();
+        int carte_graphique = Integer.parseInt(champ_carte_graphique.getText());
         String os = champ_os.getText();
         String adresse_mac = champ_adresse_mac.getText();
-        String chap_type = type;
-     
-       
+        String champ_type = type;
+        String champ_mobilite = mobilite;
+        String champ_etat = etat;
+        int num_salle = Integer.parseInt(champ_numero_salle_equipement.getText());
         
         int nombre_ports_GE = Integer.parseInt(champ_nb_GE.getText());
         int nombre_ports_LAN = Integer.parseInt(champ_nb_LAN.getText());
         String taille_ecran = champ_taille_ecran.getText();
         String marque = champ_marque.getText();
         String modele = champ_modele.getText();
-      
-        
-        
-        int num_salle = Integer.parseInt(champ_num_salle.getText()) ;
-        int poste_possible = Integer.parseInt(champ_poste_possible.getText()) ;
-        int poste_installe = Integer.parseInt(champ_poste_installe.getText()) ;
-        String nom_salle = champ_salle.getText();
-        String emplacement = champ_emplacement_salle.getText();
+
         Connection cn =null;
         Statement st =null;
         
@@ -621,23 +637,13 @@ public class NewJFrame extends javax.swing.JFrame {
 			Class.forName("com.mysql.jdbc.Driver");
 			cn = DriverManager.getConnection(url, login, passwd);
 			st = cn.createStatement();
-                        String sql = "INSERT INTO Salle(num_salle,nom_salle,emplacement_salle,nb_poste_possible,nb_poste_installe) "
-                                + "VALUES("+num_salle+",'"+nom_salle+"','"+emplacement+"',"+poste_possible+","+poste_installe+")";
-                        st.executeUpdate(sql);
-                        sql = "SELECT * FROM Salle;";
-                        ResultSet rs = st.executeQuery(sql);
-                        text_area_salle.setText("");
-                        while (rs.next())
+                        if(champ_type == "Ordinateur")
                         {
-                          num_salle = rs.getInt("num_salle");
-                          nom_salle = rs.getString("nom_salle");
-                          String emplacement_salle = rs.getString("emplacement_salle");
-                          int nb_poste_possible = rs.getInt("nb_poste_possible");
-                          int nb_poste_installe = rs.getInt("nb_poste_installe");
-                          //text_area_salle.setEditable(false);
-                          text_area_salle.setText(text_area_salle.getText()+String.valueOf(num_salle)+", "+nom_salle+", "+emplacement_salle+", "+String.valueOf(nb_poste_possible)+", "+String.valueOf(nb_poste_installe)+" \n");
-                          //System.out.format("%s, %s, %s, %s, %s\n", num_salle, nom_salle, emplacement_salle, nb_poste_possible, nb_poste_installe);
+                            String sql = "INSERT INTO Ordinateur(marque_ordinateur,modele_ordinateur,cpu_ordinateur,ram_ordinateur,os_ordinateur,etat_ordinateur,adresse_MAC_ordinateur,disque_ordinateur,type_ordinateur,carte_graphique_ordinateur,num_salle)"
+                                + "VALUES('"+marque+"','"+modele+"','"+cpu+"',"+ram+",'"+os+"',"+champ_etat+",'"+adresse_mac+"','"+disque+"',"+champ_mobilite+","+carte_graphique+","+num_salle+");";
+                            st.executeUpdate(sql);
                         }
+                     
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
@@ -653,12 +659,18 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_bouton_valider_equipementActionPerformed
 
     private void Checkbox_allumeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Checkbox_allumeActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here
+        JCheckBox cb = (JCheckBox)evt.getSource();
+        String champ_etat;
+        if(cb.isSelected() == true)
+            champ_etat = "allume";
+        else
+            champ_etat = "eteint";
+        etat = champ_etat;
     }//GEN-LAST:event_Checkbox_allumeActionPerformed
 
     private void bouton_annuler_equipementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouton_annuler_equipementActionPerformed
         // TODO add your handling code here:
-        champ_id_equipement.setText("");
         champ_cpu.setText("");
         champ_os.setText("");
         champ_adresse_mac.setText("");
@@ -668,8 +680,9 @@ public class NewJFrame extends javax.swing.JFrame {
     private void ComboBox_typeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ComboBox_typeItemStateChanged
         // TODO add your handling code here:
         JComboBox cb = (JComboBox)evt.getSource();
-        String type = (String)cb.getSelectedItem();
-        updateLabel(type);
+        String type_combo = (String)cb.getSelectedItem();
+        updateLabel(type_combo);
+        type = type_combo;
     }//GEN-LAST:event_ComboBox_typeItemStateChanged
 
     private void champ_marqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_champ_marqueActionPerformed
@@ -684,10 +697,17 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_champ_nb_GEActionPerformed
 
-    private void ComboBox_MobiliteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBox_MobiliteActionPerformed
+    private void ComboBox_mobiliteItemStateChanged(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBox_mobiliteItemStateChanged
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_ComboBox_MobiliteActionPerformed
+        JComboBox cb = (JComboBox)evt.getSource();
+        String mobilite_combo = (String)cb.getSelectedItem();
+        updateLabel(mobilite_combo);
+        mobilite = mobilite_combo;
+    }//GEN-LAST:event_ComboBox_mobiliteItemStateChanged
+
+    private void champ_numero_salle_equipementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_champ_numero_salle_equipementActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_champ_numero_salle_equipementActionPerformed
 
     public void updateLabel(String ptype){
     
@@ -797,7 +817,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JCheckBox Checkbox_allume;
     private javax.swing.JCheckBox Checkbox_eteint;
     private javax.swing.JComboBox ComboBox_Mobilite;
-    private javax.swing.JComboBox ComboBox_type;
+    public javax.swing.JComboBox ComboBox_type;
     private javax.swing.JButton bouton_annuler_equipement;
     private javax.swing.JButton bouton_annuler_salle;
     private javax.swing.JButton bouton_valider_equipement;
@@ -812,6 +832,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField champ_nb_GE;
     private javax.swing.JTextField champ_nb_LAN;
     private javax.swing.JTextField champ_num_salle;
+    private javax.swing.JTextField champ_numero_salle_equipement;
     private javax.swing.JTextField champ_os;
     private javax.swing.JTextField champ_poste_installe;
     private javax.swing.JTextField champ_poste_possible;
@@ -840,6 +861,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel label_nombre_GE;
     private javax.swing.JLabel label_nombre_LAN;
     private javax.swing.JLabel label_num_salle;
+    private javax.swing.JLabel label_numero_salle_equipement;
     private javax.swing.JLabel label_os;
     private javax.swing.JLabel label_poste_installe;
     private javax.swing.JLabel label_poste_possible;
