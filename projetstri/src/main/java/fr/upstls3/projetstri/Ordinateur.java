@@ -12,18 +12,18 @@ package fr.upstls3.projetstri;
 public class Ordinateur extends Equipement {
     
     protected int carteGraphique;
-    protected String type;
+    protected String mobilite;
     protected String cpu;
     protected int ram;
     protected String adresseMAC;
     protected int disque;
     
     
-    public Ordinateur(String marque, String modele,String cpu, int ram, String os, String etat, String adresseMAC, int disque,int carteGraphique,String type, int numero_salle) 
+    public Ordinateur(String marque, String modele,String cpu, int ram, String os, String etat, String adresseMAC, int disque,int carteGraphique,String mobilite, int numero_salle) 
     {
         super(marque,modele,os,etat,numero_salle);
         this.carteGraphique = carteGraphique;
-        this.type = type;
+        this.mobilite = mobilite;
         this.adresseMAC = adresseMAC;
         this.cpu = cpu;
         this.disque = disque;
@@ -33,9 +33,9 @@ public class Ordinateur extends Equipement {
     public int getCarteGraphique() {
         return this.carteGraphique;
     }
-    
-    public String getType() {
-        return this.type;
+
+    public String getMobilite() {
+        return mobilite;
     }
 
     public String getAdresseMAC() {
@@ -74,8 +74,7 @@ public class Ordinateur extends Equipement {
         this.ram = ram;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setMobilite(String mobilite) {
+        this.mobilite = mobilite;
     }
-    
 }
