@@ -13,13 +13,21 @@ public class Ordinateur extends Equipement {
     
     protected int carteGraphique;
     protected String type;
+    protected String cpu;
+    protected int ram;
+    protected String adresseMAC;
+    protected int disque;
     
     
     public Ordinateur(String marque, String modele,String cpu, int ram, String os, String etat, String adresseMAC, int disque,int carteGraphique,String type, int numero_salle) 
     {
-        super(marque,modele, cpu,  ram,  os,  etat,  adresseMAC,  disque,numero_salle);
+        super(marque,modele,os,etat,numero_salle);
         this.carteGraphique = carteGraphique;
-        this.type = type;   
+        this.type = type;
+        this.adresseMAC = adresseMAC;
+        this.cpu = cpu;
+        this.disque = disque;
+        this.ram = ram;
     }
     
     public int getCarteGraphique() {
@@ -28,5 +36,46 @@ public class Ordinateur extends Equipement {
     
     public String getType() {
         return this.type;
-    }   
+    }
+
+    public String getAdresseMAC() {
+        return adresseMAC;
+    }
+
+    public String getCpu() {
+        return cpu;
+    }
+
+    public int getDisque() {
+        return disque;
+    }
+
+    public int getRam() {
+        return ram;
+    }
+
+    public void setAdresseMAC(String adresseMAC) {
+        this.adresseMAC = adresseMAC;
+    }
+
+    public void setCarteGraphique(int carteGraphique) {
+        this.carteGraphique = carteGraphique;
+    }
+
+    public void setCpu(String cpu) {
+        this.cpu = cpu;
+    }
+
+    public void setDisque(int disque) {
+        this.disque = disque;
+    }
+
+    public void setRam(int ram) {
+        this.ram = ram;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+    
 }

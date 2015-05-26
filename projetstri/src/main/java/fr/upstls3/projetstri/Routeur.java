@@ -15,7 +15,7 @@ public class Routeur extends Equipement{
     protected int nbPortsLAN;
     
     public Routeur(String marque, String modele, String os, String etat,int nbPortsGoEthernet, int nbPortsLAN, int numero_salle) {
-        super(marque, modele, cpu,  ram,  os,  etat,  adresseMAC,  disque,numero_salle);
+        super(marque, modele,os,etat,numero_salle);
         this.nbPortsGoEthernet = nbPortsGoEthernet;
         this.nbPortsLAN = nbPortsLAN;
     }
@@ -23,10 +23,17 @@ public class Routeur extends Equipement{
     public int getNbPortsGoEthernet (){
         return this.nbPortsGoEthernet;
     }
-    
-    public int getnbPortsLAN() {
-        return this.nbPortsLAN;
+
+    public int getNbPortsLAN() {
+        return nbPortsLAN;
     }
-    
-    
+
+    public void setNbPortsGoEthernet(int nbPortsGoEthernet) {
+        this.nbPortsGoEthernet = nbPortsGoEthernet;
+    }
+
+    public void setNbPortsLAN(int nbPortsLAN) {
+        this.nbPortsLAN = nbPortsLAN;
+    }
+     
 }

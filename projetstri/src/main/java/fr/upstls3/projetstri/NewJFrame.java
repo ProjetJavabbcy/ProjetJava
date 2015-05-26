@@ -535,7 +535,7 @@ public class NewJFrame extends javax.swing.JFrame {
         String type_combo = (String)cb.getSelectedItem();
         updateLabel(type_combo);
         type=type_combo;
-        Connection cn =null;
+        /*Connection cn =null;
         Statement st =null;
         
         try {
@@ -577,7 +577,7 @@ public class NewJFrame extends javax.swing.JFrame {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-                }  
+                }*/  
         
     }//GEN-LAST:event_ComboBox_typeActionPerformed
 
@@ -619,9 +619,8 @@ public class NewJFrame extends javax.swing.JFrame {
                           String emplacement_salle = rs.getString("emplacement_salle");
                           int nb_poste_possible = rs.getInt("nb_poste_possible");
                           int nb_poste_installe = rs.getInt("nb_poste_installe");
-                          //text_area_salle.setEditable(false);
+                          text_area_salle.setEditable(false);
                           text_area_salle.setText(text_area_salle.getText()+String.valueOf(num_salle)+"\t"+nom_salle+"\t"+emplacement_salle+"\t"+String.valueOf(nb_poste_possible)+"\t"+String.valueOf(nb_poste_installe)+" \n");
-                          //System.out.format("%s, %s, %s, %s, %s\n", num_salle, nom_salle, emplacement_salle, nb_poste_possible, nb_poste_installe);
                         }
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -700,7 +699,7 @@ public class NewJFrame extends javax.swing.JFrame {
                               o.numero_salle = rs.getInt("num_salle");
 
                               text_area_equipement.setEditable(false);
-                              text_area_equipement.setText(text_area_equipement.getText()+type+"\t"+o.getType()+"\t"+o.getEtat()+"\t"+o.getMarque()+"\t"+o.getModele()+"\t"+o.getCpu()+"\t"+o.getRam()+"\t"+o.getDisque()+"\t"+o.getCarteGraphique()+"\t"+o.getOs()+"\t"+o.getAdresseMAC()+"\t"+o.getNumero_salle()+"\n");
+                              text_area_equipement.setText(text_area_equipement.getText()+champ_type+"\t"+o.getType()+"\t"+o.getEtat()+"\t"+o.getMarque()+"\t"+o.getModele()+"\t"+o.getCpu()+"\t"+o.getRam()+"\t"+o.getDisque()+"\t"+o.getCarteGraphique()+"\t"+o.getOs()+"\t"+o.getAdresseMAC()+"\t"+o.getNumero_salle()+"\n");
                             }
                         }
                        
@@ -709,7 +708,7 @@ public class NewJFrame extends javax.swing.JFrame {
                             int taille_ecran = Integer.parseInt(champ_taille_ecran.getText());
                             Tablette t = new Tablette(cpu, ram, os, etat, adresse_mac, disque, taille_ecran, marque, modele, num_salle);
                             String sql = "INSERT INTO Tablette(marque_tablette,modele_tablette,cpu_tablette,ram_tablette,os_tablette,etat_tablette,adresse_MAC_tablette,disque_tablette,taille_tablette,num_salle)"
-                                + "VALUES('"+t.getMarque()+"','"+t.getModel()+"','"+t.getCpu()+"',"+t.getRam()+",'"+t.getOs()+"','"+t.getEtat()+"','"+t.getAdresseMAC()+"',"+t.getDisque()+","+t.getTailleEcran()+","+t.getNumero_salle()+");";
+                                + "VALUES('"+t.getMarque()+"','"+t.getModele()+"','"+t.getCpu()+"',"+t.getRam()+",'"+t.getOs()+"','"+t.getEtat()+"','"+t.getAdresseMAC()+"',"+t.getDisque()+","+t.getTailleEcran()+","+t.getNumero_salle()+");";
                             st.executeUpdate(sql);
                             sql = "SELECT * FROM Tablette;";
                             ResultSet rs = st.executeQuery(sql);
@@ -729,35 +728,36 @@ public class NewJFrame extends javax.swing.JFrame {
                               t.tailleEcran = rs.getInt("taille_tablette");
 
                               text_area_equipement.setEditable(false);
-                              text_area_equipement.setText(text_area_equipement.getText()+type+"\t"+t.getEtat()+"\t"+t.getMarque()+"\t"+t.getModel()+"\t"+t.getCpu()+"\t"+t.getRam()+"\t"+t.getDisque()+"\t"+t.getOs()+"\t"+t.getAdresseMAC()+"\t"+t.getTailleEcran()+"\t"+t.getNumero_salle()+"\n");
+                              text_area_equipement.setText(text_area_equipement.getText()+champ_type+"\t"+t.getEtat()+"\t"+t.getMarque()+"\t"+t.getModele()+"\t"+t.getCpu()+"\t"+t.getRam()+"\t"+t.getDisque()+"\t"+t.getOs()+"\t"+t.getAdresseMAC()+"\t"+t.getTailleEcran()+"\t"+t.getNumero_salle()+"\n");
                             
+                            }
                         }
                         
                         if(champ_type == "Routeur")
                         {
-                            //int nombre_ports_GE = Integer.parseInt(champ_nb_GE.getText());
+                            int nombre_ports_GE = Integer.parseInt(champ_nb_GE.getText());
                             int nombre_ports_LAN = Integer.parseInt(champ_nb_LAN.getText()); 
-                            Routeur r = new Routeur
-                            sql = "INSERT INTO Routeur(marque_routeur,modele_routeur,os_routeur,etat_routeur,num_salle,nb_port_go_ethernet,nb_port_lan)"
-                                + "VALUES('"+r.getMarque()+"','"+r.getModele()+"','"+r.getOs()+"','"+r.getEtat()+"',"+r.getNumero_salle()+","+r.getNbPortsGoEthernet()+","+r.getnbPortsLAN()+");";
+                            Routeur r = new Routeur(marque, modele, os, etat, nombre_ports_GE, nombre_ports_LAN, num_salle);
+                            String sql = "INSERT INTO Routeur(marque_routeur,modele_routeur,os_routeur,etat_routeur,num_salle,nb_port_go_ethernet,nb_port_lan)"
+                                + "VALUES('"+r.getMarque()+"','"+r.getModele()+"','"+r.getOs()+"','"+r.getEtat()+"',"+r.getNumero_salle()+","+r.getNbPortsGoEthernet()+","+r.getNbPortsLAN()+");";
                             st.executeUpdate(sql);
                             sql = "SELECT * FROM Routeur;";
-                            rs = st.executeQuery(sql);
+                            ResultSet rs = st.executeQuery(sql);
                             text_area_equipement.setText("");
                             
                             while (rs.next())
                             {
-                              r.marque = rs.getString("marque_tablette");
-                              r.modele = rs.getString("modele_tablette");
-                              r.os = rs.getString("os_tablette");
-                              r.etat = rs.getString("etat_tablette");
+                              r.marque = rs.getString("marque_routeur");
+                              r.modele = rs.getString("modele_routeur");
+                              r.os = rs.getString("os_routeur");
+                              r.etat = rs.getString("etat_routeur");
                               r.nbPortsGoEthernet = rs.getInt("nb_port_go_ethernet");
                               r.nbPortsLAN = rs.getInt("nb_port_lan");
                               r.numero_salle = rs.getInt("num_salle");
                               
-                              text_area_equipement.setText(text_area_equipement.getText()+type+"\t"+r.getEtat()+"\t"+r.getMarque()+"\t"+r.getModele()+"\t"+r.getOs()+"\t"+r.getNbPortsGoEthernet()+"\t"+r.getnbPortsLAN()+"\t"+r.getNumero_salle()+"\n");
+                              text_area_equipement.setEditable(false);
+                              text_area_equipement.setText(text_area_equipement.getText()+champ_type+"\t"+r.getEtat()+"\t"+r.getMarque()+"\t"+r.getModele()+"\t"+r.getOs()+"\t"+r.getNbPortsGoEthernet()+"\t"+r.getNbPortsLAN()+"\t"+r.getNumero_salle()+"\n");
                             }
-                        }
                         }
                      
 		} catch (SQLException e) {
@@ -788,10 +788,20 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void bouton_annuler_equipementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouton_annuler_equipementActionPerformed
         // TODO add your handling code here:
-        champ_cpu.setText("");
-        champ_os.setText("");
         champ_adresse_mac.setText("");
+        champ_carte_graphique.setText("");
+        champ_cpu.setText("");
         champ_disque.setText("");
+        champ_marque.setText("");
+        champ_modele.setText("");
+        champ_nb_GE.setText("");
+        champ_nb_LAN.setText("");
+        champ_num_salle.setText("");
+        champ_numero_salle_equipement.setText("");
+        champ_os.setText("");
+        champ_ram.setText("");
+        champ_taille_ecran.setText("");
+        
     }//GEN-LAST:event_bouton_annuler_equipementActionPerformed
 
     private void ComboBox_typeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ComboBox_typeItemStateChanged
