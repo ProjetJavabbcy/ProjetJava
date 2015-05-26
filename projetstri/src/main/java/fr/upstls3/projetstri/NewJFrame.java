@@ -640,7 +640,7 @@ public class NewJFrame extends javax.swing.JFrame {
                         }
                         
                         if(champ_type == "Tablette")
-                        {
+                        { 
                             int taille_ecran = Integer.parseInt(champ_taille_ecran.getText());
                             String sql = "INSERT INTO Tablette(marque_tablette,modele_tablette,cpu_tablette,ram_tablette,os_tablette,etat_tablette,adresse_MAC_tablette,disque_tablette,num_salle,taille_tablette)"
                                 + "VALUES('"+marque+"','"+modele+"','"+cpu+"',"+ram+",'"+os+"','"+champ_etat+"','"+adresse_mac+"','"+disque+"',"+num_salle+","+taille_ecran+");";
