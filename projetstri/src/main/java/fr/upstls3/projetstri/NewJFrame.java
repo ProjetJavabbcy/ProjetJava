@@ -34,7 +34,7 @@ public class NewJFrame extends javax.swing.JFrame {
     public NewJFrame() {
         initComponents();
         text_area_salle.setEditable(false);
-        
+        text_area_equipement.setEditable(false);
         Connection cn =null;
         Statement st =null;
         
@@ -52,8 +52,9 @@ public class NewJFrame extends javax.swing.JFrame {
                           int nb_poste_possible = rs.getInt("nb_poste_possible");
                           int nb_poste_installe = rs.getInt("nb_poste_installe");
                           text_area_salle.setEditable(false);
-                          text_area_salle.setText(text_area_salle.getText()+String.valueOf(num_salle)+"\t"+nom_salle+"\t"+emplacement_salle+"\t"+String.valueOf(nb_poste_possible)+"\t"+String.valueOf(nb_poste_installe)+" \n");
+                          text_area_salle.setText(text_area_salle.getText()+String.valueOf(num_salle)+"\t"+nom_salle+"\t"+emplacement_salle+"\t"+String.valueOf(nb_poste_possible)+"\t"+String.valueOf(nb_poste_installe)+"\n");
                         }
+                        
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
@@ -129,7 +130,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         text_area_salle = new javax.swing.JTextArea();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        text_area_equipement = new javax.swing.JTextArea();
         label_numero_salle_equipement = new javax.swing.JLabel();
         champ_numero_salle_equipement = new javax.swing.JTextField();
 
@@ -300,9 +301,9 @@ public class NewJFrame extends javax.swing.JFrame {
         text_area_salle.setRows(5);
         jScrollPane3.setViewportView(text_area_salle);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        text_area_equipement.setColumns(20);
+        text_area_equipement.setRows(5);
+        jScrollPane1.setViewportView(text_area_equipement);
 
         label_numero_salle_equipement.setText("Numéro salle :");
 
@@ -534,6 +535,49 @@ public class NewJFrame extends javax.swing.JFrame {
         String type_combo = (String)cb.getSelectedItem();
         updateLabel(type_combo);
         type=type_combo;
+        Connection cn =null;
+        Statement st =null;
+        
+        try {
+			Class.forName("com.mysql.jdbc.Driver");
+			cn = DriverManager.getConnection(url, login, passwd);
+			st = cn.createStatement();
+                        if(type == "Ordinateur")
+                        {
+                            int carte_graphique = Integer.parseInt(champ_carte_graphique.getText());                
+                            String sql = "SELECT * FROM Ordinateur;";
+                            ResultSet rs = st.executeQuery(sql);
+                            while (rs.next())
+                            {
+                              String marque_ordinateur = rs.getString("marque_ordinateur");
+                              String modele_ordinateur = rs.getString("modele_ordinateur");
+                              String cpu_ordinateur = rs.getString("cpu_ordinateur");
+                              int ram_ordinateur = rs.getInt("ram_ordinateur");
+                              String os_ordinateur = rs.getString("os_ordinateur");
+                              String etat_ordinateur = rs.getString("etat_ordinateur");
+                              String adresse_MAC_ordinateur = rs.getString("adresse_MAC_ordinateur");
+                              int disque_ordinateur = rs.getInt("disque_ordinateur");
+                              //String type_ordinateur = rs.getString("type_ordinateur");
+                              int carte_graphique_ordinateur = rs.getInt("carte_graphique_ordinateur");
+                              int num_salle_ordinateur = rs.getInt("num_salle");
+
+                              text_area_equipement.setEditable(false);
+                              text_area_equipement.setText(text_area_equipement.getText()+type+"\t"+mobilite+"\t"+etat_ordinateur+"\t"+marque_ordinateur+"\t"+modele_ordinateur+"\t"+cpu_ordinateur+"\t"+String.valueOf(ram_ordinateur)+"\t"+String.valueOf(disque_ordinateur)+"\t"+String.valueOf(carte_graphique_ordinateur)+"\t"+os_ordinateur+"\t"+adresse_MAC_ordinateur+"\t"+String.valueOf(num_salle_ordinateur)+"\n");
+                            }
+                        }
+                     
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				cn.close();
+				st.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+                }  
         
     }//GEN-LAST:event_ComboBox_typeActionPerformed
 
@@ -547,11 +591,14 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void bouton_valider_salleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouton_valider_salleActionPerformed
         // TODO add your handling code here:
+        
         int num_salle = Integer.parseInt(champ_num_salle.getText()) ;
         int poste_possible = Integer.parseInt(champ_poste_possible.getText()) ;
         int poste_installe = Integer.parseInt(champ_poste_installe.getText()) ;
         String nom_salle = champ_salle.getText();
         String emplacement = champ_emplacement_salle.getText();
+       
+        Salle s1 = new Salle(num_salle,nom_salle,emplacement,poste_possible,poste_installe);
         Connection cn =null;
         Statement st =null;
         
@@ -560,7 +607,7 @@ public class NewJFrame extends javax.swing.JFrame {
 			cn = DriverManager.getConnection(url, login, passwd);
 			st = cn.createStatement();
                         String sql = "INSERT INTO Salle(num_salle,nom_salle,emplacement_salle,nb_poste_possible,nb_poste_installe) "
-                                + "VALUES("+num_salle+",'"+nom_salle+"','"+emplacement+"',"+poste_possible+","+poste_installe+")";
+                                + "VALUES("+s1.getNumeroSalle()+",'"+s1.getNom()+"','"+s1.getEmplacement()+"',"+s1.getNbPostePossibles()+","+s1.getNbPosteInstalles()+")";
                         st.executeUpdate(sql);
                         sql = "SELECT * FROM Salle;";
                         ResultSet rs = st.executeQuery(sql);
@@ -573,7 +620,7 @@ public class NewJFrame extends javax.swing.JFrame {
                           int nb_poste_possible = rs.getInt("nb_poste_possible");
                           int nb_poste_installe = rs.getInt("nb_poste_installe");
                           //text_area_salle.setEditable(false);
-                          text_area_salle.setText(text_area_salle.getText()+String.valueOf(num_salle)+", "+nom_salle+", "+emplacement_salle+", "+String.valueOf(nb_poste_possible)+", "+String.valueOf(nb_poste_installe)+" \n");
+                          text_area_salle.setText(text_area_salle.getText()+String.valueOf(num_salle)+"\t"+nom_salle+"\t"+emplacement_salle+"\t"+String.valueOf(nb_poste_possible)+"\t"+String.valueOf(nb_poste_installe)+" \n");
                           //System.out.format("%s, %s, %s, %s, %s\n", num_salle, nom_salle, emplacement_salle, nb_poste_possible, nb_poste_installe);
                         }
 		} catch (SQLException e) {
@@ -617,7 +664,6 @@ public class NewJFrame extends javax.swing.JFrame {
         String adresse_mac = champ_adresse_mac.getText();
         String champ_type = type;
         String champ_etat = etat;
-        System.out.println(champ_etat);
         int num_salle = Integer.parseInt(champ_numero_salle_equipement.getText());
         String marque = champ_marque.getText();
         String modele = champ_modele.getText();
@@ -632,28 +678,86 @@ public class NewJFrame extends javax.swing.JFrame {
 			st = cn.createStatement();
                         if(champ_type == "Ordinateur")
                         {
-                            int carte_graphique = Integer.parseInt(champ_carte_graphique.getText());
-                            String champ_mobilite = mobilite;
+                            int carte_graphique = Integer.parseInt(champ_carte_graphique.getText());                    
+                            Ordinateur o = new Ordinateur(marque, modele, cpu, ram, os,champ_etat, adresse_mac, disque,carte_graphique,champ_type,num_salle);
                             String sql = "INSERT INTO Ordinateur(marque_ordinateur,modele_ordinateur,cpu_ordinateur,ram_ordinateur,os_ordinateur,etat_ordinateur,adresse_MAC_ordinateur,disque_ordinateur,type_ordinateur,carte_graphique_ordinateur,num_salle)"
-                                + "VALUES('"+marque+"','"+modele+"','"+cpu+"',"+ram+",'"+os+"','"+champ_etat+"','"+adresse_mac+"','"+disque+"','"+champ_mobilite+"',"+carte_graphique+","+num_salle+");";
+                                + "VALUES('"+o.getMarque()+"','"+o.getModele()+"','"+o.getCpu()+"',"+o.getRam()+",'"+o.getOs()+"','"+o.getEtat()+"','"+o.getAdresseMAC()+"','"+o.getDisque()+"','"+o.getType()+"',"+o.getCarteGraphique()+","+o.getNumero_salle()+");";
                             st.executeUpdate(sql);
+                            sql = "SELECT * FROM Ordinateur;";
+                            ResultSet rs = st.executeQuery(sql);
+                            text_area_equipement.setText("");
+                            while (rs.next())
+                            {
+                              o.marque = rs.getString("marque_ordinateur");
+                              o.modele = rs.getString("modele_ordinateur");
+                              o.cpu = rs.getString("cpu_ordinateur");
+                              o.ram = rs.getInt("ram_ordinateur");
+                              o.os = rs.getString("os_ordinateur");
+                              o.etat = rs.getString("etat_ordinateur");
+                              o.adresseMAC = rs.getString("adresse_MAC_ordinateur");
+                              o.disque = rs.getInt("disque_ordinateur");
+                              o.carteGraphique = rs.getInt("carte_graphique_ordinateur");
+                              o.numero_salle = rs.getInt("num_salle");
+
+                              text_area_equipement.setEditable(false);
+                              text_area_equipement.setText(text_area_equipement.getText()+type+"\t"+o.getType()+"\t"+o.getEtat()+"\t"+o.getMarque()+"\t"+o.getModele()+"\t"+o.getCpu()+"\t"+o.getRam()+"\t"+o.getDisque()+"\t"+o.getCarteGraphique()+"\t"+o.getOs()+"\t"+o.getAdresseMAC()+"\t"+o.getNumero_salle()+"\n");
+                            }
                         }
-                        
+                       
                         if(champ_type == "Tablette")
                         { 
                             int taille_ecran = Integer.parseInt(champ_taille_ecran.getText());
-                            String sql = "INSERT INTO Tablette(marque_tablette,modele_tablette,cpu_tablette,ram_tablette,os_tablette,etat_tablette,adresse_MAC_tablette,disque_tablette,num_salle,taille_tablette)"
-                                + "VALUES('"+marque+"','"+modele+"','"+cpu+"',"+ram+",'"+os+"','"+champ_etat+"','"+adresse_mac+"','"+disque+"',"+num_salle+","+taille_ecran+");";
-                            st.executeUpdate(sql); 
+                            Tablette t = new Tablette(cpu, ram, os, etat, adresse_mac, disque, taille_ecran, marque, modele, num_salle);
+                            String sql = "INSERT INTO Tablette(marque_tablette,modele_tablette,cpu_tablette,ram_tablette,os_tablette,etat_tablette,adresse_MAC_tablette,disque_tablette,taille_tablette,num_salle)"
+                                + "VALUES('"+t.getMarque()+"','"+t.getModel()+"','"+t.getCpu()+"',"+t.getRam()+",'"+t.getOs()+"','"+t.getEtat()+"','"+t.getAdresseMAC()+"',"+t.getDisque()+","+t.getTailleEcran()+","+t.getNumero_salle()+");";
+                            st.executeUpdate(sql);
+                            sql = "SELECT * FROM Tablette;";
+                            ResultSet rs = st.executeQuery(sql);
+                            text_area_equipement.setText("");
+                            
+                            while (rs.next())
+                            {
+                              t.marque = rs.getString("marque_tablette");
+                              t.modele = rs.getString("modele_tablette");
+                              t.cpu = rs.getString("cpu_tablette");
+                              t.ram = rs.getInt("ram_tablette");
+                              t.os = rs.getString("os_tablette");
+                              t.etat = rs.getString("etat_tablette");
+                              t.adresseMAC = rs.getString("adresse_MAC_tablette");
+                              t.disque = rs.getInt("disque_tablette");                            
+                              t.numero_salle = rs.getInt("num_salle");
+                              t.tailleEcran = rs.getInt("taille_tablette");
+
+                              text_area_equipement.setEditable(false);
+                              text_area_equipement.setText(text_area_equipement.getText()+type+"\t"+t.getEtat()+"\t"+t.getMarque()+"\t"+t.getModel()+"\t"+t.getCpu()+"\t"+t.getRam()+"\t"+t.getDisque()+"\t"+t.getOs()+"\t"+t.getAdresseMAC()+"\t"+t.getTailleEcran()+"\t"+t.getNumero_salle()+"\n");
+                            
                         }
                         
                         if(champ_type == "Routeur")
                         {
-                            int nombre_ports_GE = Integer.parseInt(champ_nb_GE.getText());
-                            int nombre_ports_LAN = Integer.parseInt(champ_nb_LAN.getText());                       
-                            String sql = "INSERT INTO Routeur(marque_routeur,modele_routeur,os_routeur,etat_routeur,num_salle,nb_port_go_ethernet,nb_port_lan)"
-                                + "VALUES('"+marque+"','"+modele+"','"+os+"','"+champ_etat+"',"+num_salle+","+nombre_ports_GE+","+nombre_ports_LAN+");";
-                            st.executeUpdate(sql); 
+                            //int nombre_ports_GE = Integer.parseInt(champ_nb_GE.getText());
+                            int nombre_ports_LAN = Integer.parseInt(champ_nb_LAN.getText()); 
+                            Routeur r = new Routeur
+                            sql = "INSERT INTO Routeur(marque_routeur,modele_routeur,os_routeur,etat_routeur,num_salle,nb_port_go_ethernet,nb_port_lan)"
+                                + "VALUES('"+r.getMarque()+"','"+r.getModele()+"','"+r.getOs()+"','"+r.getEtat()+"',"+r.getNumero_salle()+","+r.getNbPortsGoEthernet()+","+r.getnbPortsLAN()+");";
+                            st.executeUpdate(sql);
+                            sql = "SELECT * FROM Routeur;";
+                            rs = st.executeQuery(sql);
+                            text_area_equipement.setText("");
+                            
+                            while (rs.next())
+                            {
+                              r.marque = rs.getString("marque_tablette");
+                              r.modele = rs.getString("modele_tablette");
+                              r.os = rs.getString("os_tablette");
+                              r.etat = rs.getString("etat_tablette");
+                              r.nbPortsGoEthernet = rs.getInt("nb_port_go_ethernet");
+                              r.nbPortsLAN = rs.getInt("nb_port_lan");
+                              r.numero_salle = rs.getInt("num_salle");
+                              
+                              text_area_equipement.setText(text_area_equipement.getText()+type+"\t"+r.getEtat()+"\t"+r.getMarque()+"\t"+r.getModele()+"\t"+r.getOs()+"\t"+r.getNbPortsGoEthernet()+"\t"+r.getnbPortsLAN()+"\t"+r.getNumero_salle()+"\n");
+                            }
+                        }
                         }
                      
 		} catch (SQLException e) {
@@ -735,6 +839,7 @@ public class NewJFrame extends javax.swing.JFrame {
         champ_taille_ecran.setEnabled(false);
         label_adresse_mac.setEnabled(false);
         champ_adresse_mac.setEnabled(false);
+        champ_disque.setEnabled(false);
         
         label_nombre_GE.setEnabled(true);
         champ_nb_GE.setEnabled(true);
@@ -744,8 +849,6 @@ public class NewJFrame extends javax.swing.JFrame {
         champ_nb_LAN.setEnabled(true);
         label_nombre_GE.setEnabled(true);
         champ_nb_GE.setEnabled(true);
-        
-       
     }
      if(type == "Ordinateur"){
         label_nombre_GE.setEnabled(false);
@@ -761,16 +864,13 @@ public class NewJFrame extends javax.swing.JFrame {
         label_mobilite.setEnabled(true);
         label_adresse_mac.setEnabled(true);
         champ_adresse_mac.setEnabled(true);
-        
-       
-        
-   
-        
     }
      if(type == "Tablette"){
          
         label_adresse_mac.setEnabled(true);
         champ_adresse_mac.setEnabled(true);
+        label_taille_ecran.setEnabled(true);
+        champ_taille_ecran.setEnabled(true);
         
         label_mobilite.setEnabled(false);
         ComboBox_Mobilite.setEnabled(false);
@@ -781,11 +881,8 @@ public class NewJFrame extends javax.swing.JFrame {
         label_carte_graphique.setEnabled(false);
         champ_carte_graphique.setEnabled(false);
         
-        
-        
-        
-        
     }
+     
     if(type == ""){
         label_mobilite.setEnabled(true);
         ComboBox_Mobilite.setEnabled(true);
@@ -867,7 +964,6 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel label_adresse_mac;
     private javax.swing.JLabel label_ajout_equipement;
     private javax.swing.JLabel label_ajout_salle;
@@ -892,6 +988,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel label_salle;
     private javax.swing.JLabel label_taille_ecran;
     private javax.swing.JLabel label_type;
+    private javax.swing.JTextArea text_area_equipement;
     private javax.swing.JTextArea text_area_salle;
     // End of variables declaration//GEN-END:variables
 }

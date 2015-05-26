@@ -11,12 +11,12 @@ package fr.upstls3.projetstri;
  */
 public class Tablette extends Equipement {
     
-    private int tailleEcran;
+    protected int tailleEcran;
    
     
-    public Tablette(int id_equipement,String cpu, int ram, String os, boolean etat, String adresseMAC, int disque,int tailleEcran,String marque, String modele){
+    public Tablette(String cpu, int ram, String os, String etat, String adresseMAC, int disque,int tailleEcran,String marque, String modele,int numero_salle){
         
-        super(id_equipement, marque, modele, cpu,  ram,  os,  etat,  adresseMAC,  disque);
+        super( marque, modele, cpu,  ram,  os,  etat,  adresseMAC,  disque,numero_salle);
         this.tailleEcran = tailleEcran;
         
     }

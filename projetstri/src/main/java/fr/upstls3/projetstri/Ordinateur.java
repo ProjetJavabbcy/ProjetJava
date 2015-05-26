@@ -11,18 +11,18 @@ package fr.upstls3.projetstri;
  */
 public class Ordinateur extends Equipement {
     
-    private String carteGraphique;
-    private String type;
+    protected int carteGraphique;
+    protected String type;
     
     
-    public Ordinateur(int id_equipement,String marque, String modele,String cpu, int ram, String os, boolean etat, String adresseMAC, int disque,String carteGraphique,String type) 
+    public Ordinateur(String marque, String modele,String cpu, int ram, String os, String etat, String adresseMAC, int disque,int carteGraphique,String type, int numero_salle) 
     {
-        super(id_equipement,marque,modele, cpu,  ram,  os,  etat,  adresseMAC,  disque);
+        super(marque,modele, cpu,  ram,  os,  etat,  adresseMAC,  disque,numero_salle);
         this.carteGraphique = carteGraphique;
         this.type = type;   
     }
     
-    public String getCarteGraphique() {
+    public int getCarteGraphique() {
         return this.carteGraphique;
     }
     

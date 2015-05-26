@@ -15,13 +15,14 @@ public class Equipement {
     public String cpu;
     public int ram;
     public String os;
-    public boolean etat;
+    public String etat;
     public String adresseMAC;
     public int disque;
     public String marque;
     public String modele;
-  
-    public Equipement (int id_equipement,String marque,String modele,String cpu, int ram, String os, boolean etat, String adresseMAC, int disque)
+    public int numero_salle;
+    
+    public Equipement (String marque,String modele,String cpu, int ram, String os, String etat, String adresseMAC, int disque, int numero_salle)
     {
         this.id_equipement = id_equipement;
         this.marque = marque;
@@ -32,6 +33,7 @@ public class Equipement {
         this.etat= etat;
         this.adresseMAC = adresseMAC;
         this.disque = disque;
+        this.numero_salle = numero_salle;
     }
 
     public int getId_equipement() {
@@ -50,7 +52,7 @@ public class Equipement {
         return os;
     }
     
-    public boolean getEtat(){
+    public String getEtat(){
         return etat;
     }
     
@@ -66,9 +68,23 @@ public class Equipement {
         this.os = os;
     }
 
-    public void setEtat(boolean etat) {
+    public void setEtat(String etat) {
         this.etat = etat;
     }
+
+    public String getMarque() {
+        return marque;
+    }
+
+    public String getModele() {
+        return modele;
+    }
+
+    public int getNumero_salle() {
+        return numero_salle;
+    }
+    
+    
 }
 
 

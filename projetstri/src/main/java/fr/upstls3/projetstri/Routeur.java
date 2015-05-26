@@ -11,11 +11,11 @@ package fr.upstls3.projetstri;
  */
 public class Routeur extends Equipement{
     
-    private int nbPortsGoEthernet;
-    private int nbPortsLAN;
+    protected int nbPortsGoEthernet;
+    protected int nbPortsLAN;
     
-    public Routeur(int id_equipement,String marque, String modele,String cpu, int ram, String os, boolean etat, String adresseMAC, int disque,int nbPortsGoEthernet, int nbPortsLAN) {
-        super(id_equipement,marque,modele, cpu,  ram,  os,  etat,  adresseMAC,  disque);
+    public Routeur(String marque, String modele, String os, String etat,int nbPortsGoEthernet, int nbPortsLAN, int numero_salle) {
+        super(marque, modele, cpu,  ram,  os,  etat,  adresseMAC,  disque,numero_salle);
         this.nbPortsGoEthernet = nbPortsGoEthernet;
         this.nbPortsLAN = nbPortsLAN;
     }
