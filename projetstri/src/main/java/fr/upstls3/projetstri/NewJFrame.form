@@ -46,7 +46,17 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jSeparator1" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="label_salle" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="label_ajout_salle" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="tableau_Salle" alignment="0" min="-2" pref="827" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="jScrollPane3" min="-2" pref="507" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="170" max="-2" attributes="0"/>
+          </Group>
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
@@ -86,18 +96,9 @@
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="label_ajout_salle" min="-2" max="-2" attributes="0"/>
-                          <Component id="label_salle" min="-2" max="-2" attributes="0"/>
-                          <Component id="tableau_Salle" alignment="0" min="-2" pref="827" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="label_ajout_equipement" min="-2" max="-2" attributes="0"/>
-                          <Component id="label_equipement" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -126,10 +127,7 @@
                                               </Group>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="102" attributes="0">
-                                                      <Component id="champ_modele" min="-2" pref="60" max="-2" attributes="0"/>
-                                                      <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
-                                                  </Group>
+                                                  <Component id="champ_modele" min="-2" pref="60" max="-2" attributes="0"/>
                                                   <Component id="label_modele" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
@@ -206,40 +204,53 @@
                                   </Group>
                               </Group>
                           </Group>
+                          <Component id="label_equipement" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="tableau_Equipement" alignment="0" min="-2" pref="827" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="154" max="32767" attributes="0"/>
+              <EmptySpace pref="468" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <Component id="jSeparator1" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-              <Component id="label_salle" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-              <Component id="tableau_Salle" min="-2" pref="107" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="label_ajout_salle" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="label_nom_salle" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="label_emplacement_salle" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="label_poste_installe" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="label_num_salle" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="label_poste_possible" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                      <Component id="label_salle" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                      <Component id="tableau_Salle" min="-2" pref="107" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="label_ajout_salle" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="label_nom_salle" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="label_emplacement_salle" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="label_poste_installe" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="label_num_salle" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="label_poste_possible" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="champ_salle" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="champ_emplacement_salle" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="champ_poste_possible" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="champ_num_salle" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="champ_poste_installe" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane3" min="-2" pref="218" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="champ_salle" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="champ_emplacement_salle" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="champ_poste_possible" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="champ_num_salle" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="champ_poste_installe" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="bouton_valider_salle" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="bouton_annuler_salle" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -250,7 +261,7 @@
               <Component id="label_equipement" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="tableau_Equipement" min="-2" pref="107" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
               <Component id="label_ajout_equipement" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -302,7 +313,7 @@
                   <Component id="bouton_valider_equipement" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="bouton_annuler_equipement" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="26" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -568,6 +579,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="champ_nb_GE">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="champ_nb_GEActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="label_nombre_LAN">
       <Properties>
@@ -600,5 +614,20 @@
     </Component>
     <Component class="javax.swing.JTextField" name="champ_modele">
     </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane3">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextArea" name="jTextArea1">
+          <Properties>
+            <Property name="columns" type="int" value="20"/>
+            <Property name="rows" type="int" value="5"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>

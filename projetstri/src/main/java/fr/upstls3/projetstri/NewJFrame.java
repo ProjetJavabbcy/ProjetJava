@@ -7,6 +7,7 @@ package fr.upstls3.projetstri;
 import javax.swing.JComboBox;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -29,8 +30,6 @@ public class NewJFrame extends javax.swing.JFrame {
         initComponents();
         
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -97,6 +96,8 @@ public class NewJFrame extends javax.swing.JFrame {
         champ_marque = new javax.swing.JTextField();
         label_modele = new javax.swing.JLabel();
         champ_modele = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -246,6 +247,12 @@ public class NewJFrame extends javax.swing.JFrame {
 
         label_nombre_GE.setText("Nombre Ports GE :");
 
+        champ_nb_GE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                champ_nb_GEActionPerformed(evt);
+            }
+        });
+
         label_nombre_LAN.setText("Nombre Ports LAN :");
 
         label_taille_ecran.setText("Taille Ecran (en pouces) :");
@@ -260,11 +267,23 @@ public class NewJFrame extends javax.swing.JFrame {
 
         label_modele.setText("Modèle :");
 
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane3.setViewportView(jTextArea1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator1)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(label_salle)
+                    .addComponent(label_ajout_salle)
+                    .addComponent(tableau_Salle, javax.swing.GroupLayout.PREFERRED_SIZE, 827, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(170, 170, 170))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -295,16 +314,9 @@ public class NewJFrame extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(bouton_annuler_salle))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(label_ajout_salle)
-                            .addComponent(label_salle)
-                            .addComponent(tableau_Salle, javax.swing.GroupLayout.PREFERRED_SIZE, 827, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(label_ajout_equipement)
-                            .addComponent(label_equipement)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(3, 3, 3)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -328,9 +340,7 @@ public class NewJFrame extends javax.swing.JFrame {
                                                     .addComponent(champ_marque, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addGap(18, 18, 18)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(champ_modele, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(95, 95, 95))
+                                                    .addComponent(champ_modele, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(label_modele)))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -386,33 +396,42 @@ public class NewJFrame extends javax.swing.JFrame {
                                         .addComponent(bouton_valider_equipement)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(bouton_annuler_equipement))))
+                            .addComponent(label_equipement)
                             .addComponent(tableau_Equipement, javax.swing.GroupLayout.PREFERRED_SIZE, 827, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(154, Short.MAX_VALUE))
+                .addContainerGap(468, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jSeparator1)
+                .addGap(129, 129, 129))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(label_salle)
-                .addGap(16, 16, 16)
-                .addComponent(tableau_Salle, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(label_ajout_salle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(label_nom_salle)
-                    .addComponent(label_emplacement_salle)
-                    .addComponent(label_poste_installe)
-                    .addComponent(label_num_salle)
-                    .addComponent(label_poste_possible))
-                .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(champ_salle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(champ_emplacement_salle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(champ_poste_possible, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(champ_num_salle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(champ_poste_installe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(label_salle)
+                        .addGap(16, 16, 16)
+                        .addComponent(tableau_Salle, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(label_ajout_salle)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(label_nom_salle)
+                            .addComponent(label_emplacement_salle)
+                            .addComponent(label_poste_installe)
+                            .addComponent(label_num_salle)
+                            .addComponent(label_poste_possible))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(champ_salle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(champ_emplacement_salle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(champ_poste_possible, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(champ_num_salle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(champ_poste_installe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bouton_valider_salle)
                     .addComponent(bouton_annuler_salle))
@@ -422,7 +441,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addComponent(label_equipement)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(tableau_Equipement, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17)
+                .addGap(40, 40, 40)
                 .addComponent(label_ajout_equipement)
                 .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -468,7 +487,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bouton_valider_equipement)
                     .addComponent(bouton_annuler_equipement))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -507,9 +526,22 @@ public class NewJFrame extends javax.swing.JFrame {
 			Class.forName("com.mysql.jdbc.Driver");
 			cn = DriverManager.getConnection(url, login, passwd);
 			st = cn.createStatement();
-                        String sql = "INSERT INTO Salle(num_salle,nom_salle,emplacement_salle,nb_Poste_possible,nb_Poste_installe) "
+                        String sql = "INSERT INTO Salle(num_salle,nom_salle,emplacement_salle,nb_poste_possible,nb_poste_installe) "
                                 + "VALUES("+num_salle+",'"+nom_salle+"','"+emplacement+"',"+poste_possible+","+poste_installe+")";
                         st.executeUpdate(sql);
+                        sql = "SELECT * FROM Salle;";
+                        ResultSet rs = st.executeQuery(sql);
+                        while (rs.next())
+                        {
+                          num_salle = rs.getInt("num_salle");
+                          nom_salle = rs.getString("nom_salle");
+                          String emplacement_salle = rs.getString("emplacement_salle");
+                          int nb_poste_possible = rs.getInt("nb_poste_possible");
+                          int nb_poste_installe = rs.getInt("nb_poste_installe");
+                          jTextArea1.setEditable(false);
+                          jTextArea1.setText(jTextArea1.getText()+String.valueOf(num_salle)+", "+nom_salle+", "+emplacement_salle+", "+String.valueOf(nb_poste_possible)+", "+String.valueOf(nb_poste_installe)+" \n");
+                          System.out.format("%s, %s, %s, %s, %s\n", num_salle, nom_salle, emplacement_salle, nb_poste_possible, nb_poste_installe);
+                        }
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
@@ -581,6 +613,10 @@ public class NewJFrame extends javax.swing.JFrame {
     private void champ_cpuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_champ_cpuActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_champ_cpuActionPerformed
+
+    private void champ_nb_GEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_champ_nb_GEActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_champ_nb_GEActionPerformed
 
     public void updateLabel(String ptype){
     
@@ -713,8 +749,10 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField champ_salle;
     private javax.swing.JTextField champ_taille_ecran;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel label_adresse_mac;
     private javax.swing.JLabel label_ajout_equipement;
     private javax.swing.JLabel label_ajout_salle;
