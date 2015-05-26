@@ -675,8 +675,10 @@ public class NewJFrame extends javax.swing.JFrame {
 			Class.forName("com.mysql.jdbc.Driver");
 			cn = DriverManager.getConnection(url, login, passwd);
 			st = cn.createStatement();
+                        
                         if(champ_type == "Ordinateur")
                         {
+                            System.out.println("ordi");
                             int carte_graphique = Integer.parseInt(champ_carte_graphique.getText());                    
                             Ordinateur o = new Ordinateur(marque, modele, cpu, ram, os,champ_etat, adresse_mac, disque,carte_graphique,champ_type,num_salle);
                             String sql = "INSERT INTO Ordinateur(marque_ordinateur,modele_ordinateur,cpu_ordinateur,ram_ordinateur,os_ordinateur,etat_ordinateur,adresse_MAC_ordinateur,disque_ordinateur,type_ordinateur,carte_graphique_ordinateur,num_salle)"
@@ -705,6 +707,7 @@ public class NewJFrame extends javax.swing.JFrame {
                        
                         if(champ_type == "Tablette")
                         { 
+                            System.out.println("tab");
                             int taille_ecran = Integer.parseInt(champ_taille_ecran.getText());
                             Tablette t = new Tablette(cpu, ram, os, etat, adresse_mac, disque, taille_ecran, marque, modele, num_salle);
                             String sql = "INSERT INTO Tablette(marque_tablette,modele_tablette,cpu_tablette,ram_tablette,os_tablette,etat_tablette,adresse_MAC_tablette,disque_tablette,taille_tablette,num_salle)"
@@ -729,12 +732,12 @@ public class NewJFrame extends javax.swing.JFrame {
 
                               text_area_equipement.setEditable(false);
                               text_area_equipement.setText(text_area_equipement.getText()+champ_type+"\t"+t.getEtat()+"\t"+t.getMarque()+"\t"+t.getModele()+"\t"+t.getCpu()+"\t"+t.getRam()+"\t"+t.getDisque()+"\t"+t.getOs()+"\t"+t.getAdresseMAC()+"\t"+t.getTailleEcran()+"\t"+t.getNumero_salle()+"\n");
-                            
                             }
                         }
                         
                         if(champ_type == "Routeur")
                         {
+                            System.out.println("rout");
                             int nombre_ports_GE = Integer.parseInt(champ_nb_GE.getText());
                             int nombre_ports_LAN = Integer.parseInt(champ_nb_LAN.getText()); 
                             Routeur r = new Routeur(marque, modele, os, etat, nombre_ports_GE, nombre_ports_LAN, num_salle);
@@ -778,7 +781,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private void Checkbox_allumeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Checkbox_allumeActionPerformed
         // TODO add your handling code here
         JCheckBox checkbox = (JCheckBox)evt.getSource();
-        String champ_etat;
+        String champ_etat = "eteint";
         if(checkbox.isSelected())
             champ_etat = "allume";
         else
