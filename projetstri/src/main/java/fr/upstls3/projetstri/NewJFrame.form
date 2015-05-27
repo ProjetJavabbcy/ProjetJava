@@ -94,7 +94,6 @@
                                   <Component id="Checkbox_allume" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="jScrollPane1" alignment="0" min="-2" pref="1100" max="-2" attributes="0"/>
                           <Component id="label_equipement" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -193,6 +192,7 @@
                                   </Group>
                               </Group>
                           </Group>
+                          <Component id="jScrollPane1" alignment="0" min="-2" pref="1300" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -252,7 +252,7 @@
                       <Component id="label_salle" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="1398" max="32767" attributes="0"/>
+              <EmptySpace pref="1307" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
