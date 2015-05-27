@@ -137,7 +137,7 @@ public class NewJFrame extends javax.swing.JFrame {
         champ_supprimer_salle = new javax.swing.JTextField();
         bouton_supprimer_salle = new javax.swing.JButton();
         label_supprimer_equipement = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        champ_supprimer_equipement = new javax.swing.JTextField();
         bouton_supprimer_equipement = new javax.swing.JButton();
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
@@ -342,6 +342,7 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
+        label_supprimer_salle.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         label_supprimer_salle.setText("Entrer le numéro de la salle pour la supprimer :");
 
         champ_supprimer_salle.addActionListener(new java.awt.event.ActionListener() {
@@ -359,11 +360,12 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
+        label_supprimer_equipement.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         label_supprimer_equipement.setText("Entrer l'identifiant de l'équipement pour le supprimer :");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        champ_supprimer_equipement.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                champ_supprimer_equipementActionPerformed(evt);
             }
         });
 
@@ -471,7 +473,7 @@ public class NewJFrame extends javax.swing.JFrame {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label_equipement)
                             .addComponent(label_supprimer_equipement)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(champ_supprimer_equipement, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(bouton_supprimer_equipement)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -638,10 +640,10 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addComponent(label_numero_salle_equipement)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(champ_numero_salle_equipement, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
                 .addComponent(label_supprimer_equipement)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(champ_supprimer_equipement, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14)
                 .addComponent(bouton_supprimer_equipement, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(91, 91, 91))
@@ -915,8 +917,18 @@ public class NewJFrame extends javax.swing.JFrame {
                             String sql = "INSERT INTO Tablette(marque_tablette,modele_tablette,cpu_tablette,ram_tablette,os_tablette,etat_tablette,adresse_MAC_tablette,disque_tablette,taille_tablette,num_salle)"
                                 + "VALUES('"+t.getMarque()+"','"+t.getModele()+"','"+t.getCpu()+"',"+t.getRam()+",'"+t.getOs()+"','"+t.getEtat()+"','"+t.getAdresseMAC()+"',"+t.getDisque()+","+t.getTailleEcran()+","+t.getNumero_salle()+");";
                             st.executeUpdate(sql);
-                            sql = "SELECT * FROM Tablette;";
+                            sql= "SELECT nb_poste_installe FROM Salle WHERE num_salle="+num_salle+";";
                             ResultSet rs = st.executeQuery(sql);
+                            int nb_old_poste_installe=0;
+                            while (rs.next())
+                            {
+                                nb_old_poste_installe = rs.getInt("nb_poste_installe");
+                            }
+                            nb_old_poste_installe = (nb_old_poste_installe + 1);
+                            sql = "UPDATE Salle SET nb_poste_installe = "+nb_old_poste_installe+" WHERE num_salle="+num_salle+";";
+                            st.executeUpdate(sql);
+                            sql = "SELECT * FROM Tablette;";
+                            rs = st.executeQuery(sql);
                             text_area_equipement.setText("");
                             
                             while (rs.next())
@@ -936,6 +948,20 @@ public class NewJFrame extends javax.swing.JFrame {
                               text_area_equipement.setEditable(false);
                               text_area_equipement.setText(text_area_equipement.getText()+t.getId()+"\t"+type+"\t"+t.getEtat()+"\t"+t.getMarque()+"\t"+t.getModele()+"\t"+t.getCpu()+"\t"+t.getRam()+"\t"+t.getDisque()+"\t"+t.getOs()+"\t"+t.getAdresseMAC()+"\t"+t.getTailleEcran()+"\t"+t.getNumero_salle()+"\n");
                             }
+                            Salle s1 = new Salle(1,"init","univ",0,0);
+                            sql = "SELECT * FROM Salle;";
+                            rs = st.executeQuery(sql);
+                            text_area_salle.setText("");
+                            while (rs.next())
+                            {
+                              s1.numeroSalle = rs.getInt("num_salle");
+                              s1.nom = rs.getString("nom_salle");
+                              s1.emplacement = rs.getString("emplacement_salle");
+                              s1.nbPostePossibles = rs.getInt("nb_poste_possible");
+                              s1.nbPosteInstalles = rs.getInt("nb_poste_installe");
+                              text_area_salle.setEditable(false);
+                              text_area_salle.setText(text_area_salle.getText()+s1.getNumeroSalle()+"\t"+s1.getNom()+"\t"+s1.getEmplacement()+"\t"+s1.getNbPostePossibles()+"\t"+s1.getNbPosteInstalles()+" \n");
+                            }
                         }
                         
                         if(type.equals("Routeur") == true)
@@ -946,8 +972,18 @@ public class NewJFrame extends javax.swing.JFrame {
                             String sql = "INSERT INTO Routeur(marque_routeur,modele_routeur,os_routeur,etat_routeur,num_salle,nb_port_go_ethernet,nb_port_lan)"
                                 + "VALUES('"+r.getMarque()+"','"+r.getModele()+"','"+r.getOs()+"','"+r.getEtat()+"',"+r.getNumero_salle()+","+r.getNbPortsGoEthernet()+","+r.getNbPortsLAN()+");";
                             st.executeUpdate(sql);
-                            sql = "SELECT * FROM Routeur;";
+                            sql= "SELECT nb_poste_installe FROM Salle WHERE num_salle="+num_salle+";";
                             ResultSet rs = st.executeQuery(sql);
+                            int nb_old_poste_installe=0;
+                            while (rs.next())
+                            {
+                                nb_old_poste_installe = rs.getInt("nb_poste_installe");
+                            }
+                            nb_old_poste_installe = (nb_old_poste_installe + 1);
+                            sql = "UPDATE Salle SET nb_poste_installe = "+nb_old_poste_installe+" WHERE num_salle="+num_salle+";";
+                            st.executeUpdate(sql);
+                            sql = "SELECT * FROM Routeur;";
+                            rs = st.executeQuery(sql);
                             text_area_equipement.setText("");
                             
                             while (rs.next())
@@ -963,6 +999,20 @@ public class NewJFrame extends javax.swing.JFrame {
                               
                               text_area_equipement.setEditable(false);
                               text_area_equipement.setText(text_area_equipement.getText()+r.getId()+"\t"+type+"\t"+r.getEtat()+"\t"+r.getMarque()+"\t"+r.getModele()+"\t"+r.getOs()+"\t"+r.getNbPortsGoEthernet()+"\t"+r.getNbPortsLAN()+"\t"+r.getNumero_salle()+"\n");
+                            }
+                            Salle s1 = new Salle(1,"init","univ",0,0);
+                            sql = "SELECT * FROM Salle;";
+                            rs = st.executeQuery(sql);
+                            text_area_salle.setText("");
+                            while (rs.next())
+                            {
+                              s1.numeroSalle = rs.getInt("num_salle");
+                              s1.nom = rs.getString("nom_salle");
+                              s1.emplacement = rs.getString("emplacement_salle");
+                              s1.nbPostePossibles = rs.getInt("nb_poste_possible");
+                              s1.nbPosteInstalles = rs.getInt("nb_poste_installe");
+                              text_area_salle.setEditable(false);
+                              text_area_salle.setText(text_area_salle.getText()+s1.getNumeroSalle()+"\t"+s1.getNom()+"\t"+s1.getEmplacement()+"\t"+s1.getNbPostePossibles()+"\t"+s1.getNbPosteInstalles()+" \n");
                             }
                         }
                      
@@ -1096,26 +1146,209 @@ public class NewJFrame extends javax.swing.JFrame {
                 }
     }//GEN-LAST:event_bouton_supprimer_salleActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void champ_supprimer_equipementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_champ_supprimer_equipementActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_champ_supprimer_equipementActionPerformed
 
     private void bouton_supprimer_equipementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouton_supprimer_equipementActionPerformed
         // TODO add your handling code here:
-        if(type.equals("Ordinateur") == true)
-        {
-
-        }
+        int id_equipement = Integer.parseInt(champ_supprimer_equipement.getText()) ;
+        Connection cn =null;
+        Statement st =null;
         
-        if(type.equals("Tablette") == true)
-        {
+        try {
+                        Class.forName("com.mysql.jdbc.Driver");
+			cn = DriverManager.getConnection(url, login, passwd);
+			st = cn.createStatement();
+                        
+                        if(type.equals("Ordinateur") == true)
+                        {
+                            String sql= "SELECT num_salle FROM Ordinateur WHERE id_ordinateur="+id_equipement+";";
+                            ResultSet rs = st.executeQuery(sql);
+                            int numero_salle=0;
+                            while (rs.next())
+                            {
+                                numero_salle = rs.getInt("num_salle");
+                            }
+                            sql= "SELECT nb_poste_installe FROM Salle WHERE num_salle="+numero_salle+";";
+                            rs = st.executeQuery(sql);
+                            int nb_new_poste_installe=0;
+                            while (rs.next())
+                            {
+                                nb_new_poste_installe = rs.getInt("nb_poste_installe");
+                            }
+                            nb_new_poste_installe = (nb_new_poste_installe - 1);
+                            sql = "UPDATE Salle SET nb_poste_installe = "+nb_new_poste_installe+" WHERE num_salle="+numero_salle+";";
+                            st.executeUpdate(sql);
+                            sql = "DELETE FROM Ordinateur WHERE id_ordinateur="+id_equipement+";";
+                            st.executeUpdate(sql);
+                            Salle s1 = new Salle(1,"init","univ",0,0);
+                            sql = "SELECT * FROM Salle;";
+                            rs = st.executeQuery(sql);
+                            text_area_salle.setText("");
+                            while (rs.next())
+                            {
+                              s1.numeroSalle = rs.getInt("num_salle");
+                              s1.nom = rs.getString("nom_salle");
+                              s1.emplacement = rs.getString("emplacement_salle");
+                              s1.nbPostePossibles = rs.getInt("nb_poste_possible");
+                              s1.nbPosteInstalles = rs.getInt("nb_poste_installe");
+                              text_area_salle.setEditable(false);
+                              text_area_salle.setText(text_area_salle.getText()+s1.getNumeroSalle()+"\t"+s1.getNom()+"\t"+s1.getEmplacement()+"\t"+s1.getNbPostePossibles()+"\t"+s1.getNbPosteInstalles()+" \n");
+                            }
+                            Ordinateur o = new Ordinateur(1,"msi", "ge80", "i3", 4, "w7", "allume", "AA:BB:CC:DD:EE:FF", 1000, 1024, "portable", 1);
+                            sql = "SELECT * FROM Ordinateur;";
+                            rs = st.executeQuery(sql);
+                            text_area_equipement.setText("");
+                            while (rs.next())
+                            {
+                              o.id = rs.getInt("id_ordinateur");
+                              o.marque = rs.getString("marque_ordinateur");
+                              o.modele = rs.getString("modele_ordinateur");
+                              o.cpu = rs.getString("cpu_ordinateur");
+                              o.ram = rs.getInt("ram_ordinateur");
+                              o.os = rs.getString("os_ordinateur");
+                              o.etat = rs.getString("etat_ordinateur");
+                              o.adresseMAC = rs.getString("adresse_MAC_ordinateur");
+                              o.disque = rs.getInt("disque_ordinateur");
+                              o.carteGraphique = rs.getInt("carte_graphique_ordinateur");
+                              o.numero_salle = rs.getInt("num_salle");
+                              o.mobilite = rs.getString("type_ordinateur");
 
-        }
-        
-        if(type.equals("Routeur") == true)
-        {
+                              text_area_equipement.setEditable(false);
+                              text_area_equipement.setText(text_area_equipement.getText()+o.getId()+"\t"+type+"\t"+o.getMobilite()+"\t"+o.getEtat()+"\t"+o.getMarque()+"\t"+o.getModele()+"\t"+o.getCpu()+"\t"+o.getRam()+"\t"+o.getDisque()+"\t"+o.getCarteGraphique()+"\t"+o.getOs()+"\t"+o.getAdresseMAC()+"\t"+o.getNumero_salle()+"\n");
+                            }
+                            
+                        }
+                        
+                        if(type.equals("Tablette") == true)
+                        {
+                            String sql= "SELECT num_salle FROM Tablette WHERE id_tablette="+id_equipement+";";
+                            ResultSet rs = st.executeQuery(sql);
+                            int numero_salle=0;
+                            while (rs.next())
+                            {
+                                numero_salle = rs.getInt("num_salle");
+                            }
+                            sql= "SELECT nb_poste_installe FROM Salle WHERE num_salle="+numero_salle+";";
+                            rs = st.executeQuery(sql);
+                            int nb_new_poste_installe=0;
+                            while (rs.next())
+                            {
+                                nb_new_poste_installe = rs.getInt("nb_poste_installe");
+                            }
+                            nb_new_poste_installe = (nb_new_poste_installe - 1);
+                            sql = "UPDATE Salle SET nb_poste_installe = "+nb_new_poste_installe+" WHERE num_salle="+numero_salle+";";
+                            st.executeUpdate(sql);
+                            sql = "DELETE FROM Tablette WHERE id_tablette="+id_equipement+";";
+                            st.executeUpdate(sql);
+                            Salle s1 = new Salle(1,"init","univ",0,0);
+                            sql = "SELECT * FROM Salle;";
+                            rs = st.executeQuery(sql);
+                            text_area_salle.setText("");
+                            while (rs.next())
+                            {
+                              s1.numeroSalle = rs.getInt("num_salle");
+                              s1.nom = rs.getString("nom_salle");
+                              s1.emplacement = rs.getString("emplacement_salle");
+                              s1.nbPostePossibles = rs.getInt("nb_poste_possible");
+                              s1.nbPosteInstalles = rs.getInt("nb_poste_installe");
+                              text_area_salle.setEditable(false);
+                              text_area_salle.setText(text_area_salle.getText()+s1.getNumeroSalle()+"\t"+s1.getNom()+"\t"+s1.getEmplacement()+"\t"+s1.getNbPostePossibles()+"\t"+s1.getNbPosteInstalles()+" \n");
+                            }
+                            Tablette t = new Tablette(1,"dualcore", 4, "android", "allumee", "AA:BB:CC:DD:EE:CC", 32, 7, "Samsung", "tab", 1);
+                            sql = "SELECT * FROM Tablette;";
+                            rs = st.executeQuery(sql);
+                            text_area_equipement.setText("");
+                            
+                            while (rs.next())
+                            {
+                              t.id = rs.getInt("id_tablette");
+                              t.marque = rs.getString("marque_tablette");
+                              t.modele = rs.getString("modele_tablette");
+                              t.cpu = rs.getString("cpu_tablette");
+                              t.ram = rs.getInt("ram_tablette");
+                              t.os = rs.getString("os_tablette");
+                              t.etat = rs.getString("etat_tablette");
+                              t.adresseMAC = rs.getString("adresse_MAC_tablette");
+                              t.disque = rs.getInt("disque_tablette");                            
+                              t.numero_salle = rs.getInt("num_salle");
+                              t.tailleEcran = rs.getInt("taille_tablette");
 
-        }
+                              text_area_equipement.setEditable(false);
+                              text_area_equipement.setText(text_area_equipement.getText()+t.getId()+"\t"+type+"\t"+t.getEtat()+"\t"+t.getMarque()+"\t"+t.getModele()+"\t"+t.getCpu()+"\t"+t.getRam()+"\t"+t.getDisque()+"\t"+t.getOs()+"\t"+t.getAdresseMAC()+"\t"+t.getTailleEcran()+"\t"+t.getNumero_salle()+"\n");
+                            }
+                        }
+                        
+                        if(type.equals("Routeur") == true)
+                        {
+                            String sql= "SELECT num_salle FROM Routeur WHERE id_routeur="+id_equipement+";";
+                            ResultSet rs = st.executeQuery(sql);
+                            int numero_salle=0;
+                            while (rs.next())
+                            {
+                                numero_salle = rs.getInt("num_salle");
+                            }
+                            sql= "SELECT nb_poste_installe FROM Salle WHERE num_salle="+numero_salle+";";
+                            rs = st.executeQuery(sql);
+                            int nb_new_poste_installe=0;
+                            while (rs.next())
+                            {
+                                nb_new_poste_installe = rs.getInt("nb_poste_installe");
+                            }
+                            nb_new_poste_installe = (nb_new_poste_installe - 1);
+                            sql = "UPDATE Salle SET nb_poste_installe = "+nb_new_poste_installe+" WHERE num_salle="+numero_salle+";";
+                            st.executeUpdate(sql);
+                            sql = "DELETE FROM Routeur WHERE id_routeur="+id_equipement+";";
+                            st.executeUpdate(sql);
+                            Salle s1 = new Salle(1,"init","univ",0,0);
+                            sql = "SELECT * FROM Salle;";
+                            rs = st.executeQuery(sql);
+                            text_area_salle.setText("");
+                            while (rs.next())
+                            {
+                              s1.numeroSalle = rs.getInt("num_salle");
+                              s1.nom = rs.getString("nom_salle");
+                              s1.emplacement = rs.getString("emplacement_salle");
+                              s1.nbPostePossibles = rs.getInt("nb_poste_possible");
+                              s1.nbPosteInstalles = rs.getInt("nb_poste_installe");
+                              text_area_salle.setEditable(false);
+                              text_area_salle.setText(text_area_salle.getText()+s1.getNumeroSalle()+"\t"+s1.getNom()+"\t"+s1.getEmplacement()+"\t"+s1.getNbPostePossibles()+"\t"+s1.getNbPosteInstalles()+" \n");
+                            }
+                            
+                            Routeur r = new Routeur(1,"Cisco", "RV042G", "IOS", "allumee", 2, 8, 1);
+                            sql = "SELECT * FROM Routeur;";
+                            rs = st.executeQuery(sql);
+                            text_area_equipement.setText("");
+                            
+                            while (rs.next())
+                            {
+                              r.id = rs.getInt("id_routeur");
+                              r.marque = rs.getString("marque_routeur");
+                              r.modele = rs.getString("modele_routeur");
+                              r.os = rs.getString("os_routeur");
+                              r.etat = rs.getString("etat_routeur");
+                              r.nbPortsGoEthernet = rs.getInt("nb_port_go_ethernet");
+                              r.nbPortsLAN = rs.getInt("nb_port_lan");
+                              r.numero_salle = rs.getInt("num_salle");
+                              
+                              text_area_equipement.setEditable(false);
+                              text_area_equipement.setText(text_area_equipement.getText()+r.getId()+"\t"+type+"\t"+r.getEtat()+"\t"+r.getMarque()+"\t"+r.getModele()+"\t"+r.getOs()+"\t"+r.getNbPortsGoEthernet()+"\t"+r.getNbPortsLAN()+"\t"+r.getNumero_salle()+"\n");
+                            }
+                        }
+                        
+                } catch (SQLException e) {
+                        e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                        e.printStackTrace();
+                } finally {
+                        try {
+                                cn.close();
+                                st.close();
+                        } catch (SQLException e) {
+                                e.printStackTrace();
+                        }
+                }        
     }//GEN-LAST:event_bouton_supprimer_equipementActionPerformed
 
     public void updateLabel(String ptype){
@@ -1255,6 +1488,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField champ_poste_possible;
     private javax.swing.JTextField champ_ram;
     private javax.swing.JTextField champ_salle;
+    private javax.swing.JTextField champ_supprimer_equipement;
     private javax.swing.JTextField champ_supprimer_salle;
     private javax.swing.JTextField champ_taille_ecran;
     private javax.swing.JButton jButton1;
@@ -1263,7 +1497,6 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel label_adresse_mac;
     private javax.swing.JLabel label_ajout_equipement;
     private javax.swing.JLabel label_ajout_salle;
