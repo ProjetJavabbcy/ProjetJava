@@ -13,7 +13,7 @@ import java.sql.Statement;
 
 
 /**
- * Classe Tablette NewJFrame héritée de la classe javax.swing.JFrame
+ * Classe NewJFrame héritée de la classe javax.swing.JFrame
  * @author Ludovic BOMBAIL, Selim YAHI, Cyril CRISTOFOL, Loic BARBARESCO
  */
 public class NewJFrame extends javax.swing.JFrame {
@@ -739,7 +739,7 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_champ_salleActionPerformed
 
      /** Clic comboBox type
-     * @Author Ludovic BOMBAIL
+     * @author Ludovic BOMBAIL
      * @param evt 
      * @throws SQLException
      * @throws ClassNotFoundException
@@ -857,7 +857,7 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_champ_osActionPerformed
     /** Clic bouton valider salle
-     * @Author Ludovic BOMBAIL
+     * @author Ludovic BOMBAIL
      * @param evt 
      * @throws SQLException
      * @throws ClassNotFoundException
@@ -918,7 +918,7 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_champ_emplacement_salleActionPerformed
 
     /** Clic bouton annuler salle
-     * @Author Loic BARBARESCO
+     * @author Loic BARBARESCO
      * @param evt 
      * @throws SQLException
      * @throws ClassNotFoundException
@@ -933,7 +933,7 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_bouton_annuler_salleActionPerformed
 
     /** Clic bouton valider equipement
-     * @Author Selim YAHI
+     * @author Selim YAHI
      * @throws SQLException
      * @throws ClassNotFoundException
      */ 
@@ -1134,7 +1134,7 @@ public class NewJFrame extends javax.swing.JFrame {
                         
     }//GEN-LAST:event_bouton_valider_equipementActionPerformed
     /** Clic bouton changement etat
-     * @Author Ludovic BOMBAIL
+     * @author Ludovic BOMBAIL
      */ 
     private void Checkbox_allumeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Checkbox_allumeActionPerformed
         // TODO add your handling code here
@@ -1147,7 +1147,7 @@ public class NewJFrame extends javax.swing.JFrame {
         etat = champ_etat;
     }//GEN-LAST:event_Checkbox_allumeActionPerformed
     /** Clic bouton annuler equipement pour remettre les champs à vide
-     * @Author Selim YAHI
+     * @author Selim YAHI
      * @param evt 
      */
     private void bouton_annuler_equipementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouton_annuler_equipementActionPerformed
@@ -1167,7 +1167,7 @@ public class NewJFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_bouton_annuler_equipementActionPerformed
     /** Clic bouton type equipement
-     * @Author Loic BARBARESCO
+     * @author Loic BARBARESCO
      * @param evt 
      */
     private void ComboBox_typeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ComboBox_typeItemStateChanged
@@ -1194,7 +1194,7 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_champ_numero_salle_equipementActionPerformed
      /** Clic bouton mobilite ordinateur
-     * @Author Selim YAHI
+     * @author Selim YAHI
      * @param evt 
      */
     private void ComboBox_MobiliteItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ComboBox_MobiliteItemStateChanged
@@ -1212,7 +1212,7 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_champ_supprimer_salleActionPerformed
     /** Clic bouton supprimer salle
-     * @Author Cyril CRISTOPHOL
+     * @author Cyril CRISTOPHOL
      * @param evt 
      * @throws SQLException
      * @throws ClassNotFoundException
@@ -1269,7 +1269,7 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_champ_supprimer_equipementActionPerformed
      /** Clic bouton supprimer equipement
-     * @Author Ludovic BOMBAIL
+     * @author Ludovic BOMBAIL
      * @param evt 
      * @throws SQLException
      * @throws ClassNotFoundException
@@ -1475,7 +1475,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 }        
     }//GEN-LAST:event_bouton_supprimer_equipementActionPerformed
     /** Procedure qui grise ou active les labels en fonction du type de l'équipement
-     * @Author Ludovic BOMBAIL
+     * @author Ludovic BOMBAIL
      * @param evt 
      * @throws SQLException
      * @throws ClassNotFoundException
@@ -1707,7 +1707,7 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_champ_nouvel_osActionPerformed
     /** Procedure permettant de modifier l'os d'un ordinateur, d'une tablette ou d'un routeur
-     * @Author Ludovic BOMBAIL - Cyril CRISTOFOL
+     * @author Ludovic BOMBAIL - Cyril CRISTOFOL
      * @param evt 
      * @throws SQLException
      * @throws ClassNotFoundException
@@ -1826,7 +1826,7 @@ public class NewJFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_bouton_changer_osActionPerformed
     /** Procedure qui grise ou active les labels en fonction du type de l'équipement
-     * @Author Ludovic BOMBAIL
+     * @author Ludovic BOMBAIL
      * @param ptype
      */
     public void updateLabel(String ptype){
