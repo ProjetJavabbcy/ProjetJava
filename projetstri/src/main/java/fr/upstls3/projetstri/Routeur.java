@@ -14,8 +14,8 @@ public class Routeur extends Equipement{
     protected int nbPortsGoEthernet;
     protected int nbPortsLAN;
     
-    public Routeur(String marque, String modele, String os, String etat,int nbPortsGoEthernet, int nbPortsLAN, int numero_salle) {
-        super(marque, modele,os,etat,numero_salle);
+    public Routeur(int id,String marque, String modele, String os, String etat,int nbPortsGoEthernet, int nbPortsLAN, int numero_salle) {
+        super(id,marque, modele,os,etat,numero_salle);
         this.nbPortsGoEthernet = nbPortsGoEthernet;
         this.nbPortsLAN = nbPortsLAN;
     }

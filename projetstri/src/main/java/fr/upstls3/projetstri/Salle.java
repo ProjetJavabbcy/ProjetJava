@@ -10,11 +10,11 @@ package fr.upstls3.projetstri;
  */
 public class Salle {
 
-    private int numeroSalle;
-    private String nom;
-    private int nbPosteInstalles;
-    private int nbPostePossibles;
-    private String emplacement;
+    protected int numeroSalle;
+    protected String nom;
+    protected int nbPosteInstalles;
+    protected int nbPostePossibles;
+    protected String emplacement;
     
     
     public Salle (int numeroSalle,String nom, String emplacement, int nbPostePossi, int nbPosteIns)

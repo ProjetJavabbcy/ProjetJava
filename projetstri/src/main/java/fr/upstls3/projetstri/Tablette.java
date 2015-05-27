@@ -18,9 +18,9 @@ public class Tablette extends Equipement {
     protected int disque;
    
     
-    public Tablette(String cpu, int ram, String os, String etat, String adresseMAC, int disque,int tailleEcran,String marque, String modele,int numero_salle){
+    public Tablette(int id,String cpu, int ram, String os, String etat, String adresseMAC, int disque,int tailleEcran,String marque, String modele,int numero_salle){
         
-        super( marque, modele,os, etat,numero_salle);
+        super(id,marque, modele,os, etat,numero_salle);
         this.tailleEcran = tailleEcran;
         this.adresseMAC = adresseMAC;
         this.cpu = cpu;

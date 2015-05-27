@@ -21,7 +21,7 @@ public class NewJFrame extends javax.swing.JFrame {
     String login = "java";
     String passwd = "projetjava3166";
     String type;
-    String mobilite_pc;
+    String mobilite_pc="Portable";
     String etat = "eteint";
     
     /**
@@ -38,17 +38,20 @@ public class NewJFrame extends javax.swing.JFrame {
 			Class.forName("com.mysql.jdbc.Driver");
 			cn = DriverManager.getConnection(url, login, passwd);
 			st = cn.createStatement();
+                        
+                        Salle s1 = new Salle(1,"init","univ",0,0);
                         String sql = "SELECT * FROM Salle;";
                         ResultSet rs = st.executeQuery(sql);
+                        text_area_salle.setText("");
                         while (rs.next())
                         {
-                          int num_salle = rs.getInt("num_salle");
-                          String nom_salle = rs.getString("nom_salle");
-                          String emplacement_salle = rs.getString("emplacement_salle");
-                          int nb_poste_possible = rs.getInt("nb_poste_possible");
-                          int nb_poste_installe = rs.getInt("nb_poste_installe");
+                          s1.numeroSalle = rs.getInt("num_salle");
+                          s1.nom = rs.getString("nom_salle");
+                          s1.emplacement = rs.getString("emplacement_salle");
+                          s1.nbPostePossibles = rs.getInt("nb_poste_possible");
+                          s1.nbPosteInstalles = rs.getInt("nb_poste_installe");
                           text_area_salle.setEditable(false);
-                          text_area_salle.setText(text_area_salle.getText()+String.valueOf(num_salle)+"\t"+nom_salle+"\t"+emplacement_salle+"\t"+String.valueOf(nb_poste_possible)+"\t"+String.valueOf(nb_poste_installe)+"\n");
+                          text_area_salle.setText(text_area_salle.getText()+s1.getNumeroSalle()+"\t"+s1.getNom()+"\t"+s1.getEmplacement()+"\t"+s1.getNbPostePossibles()+"\t"+s1.getNbPosteInstalles()+" \n");
                         }
                         
 		} catch (SQLException e) {
@@ -76,6 +79,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
         label_salle = new javax.swing.JLabel();
         label_ajout_salle = new javax.swing.JLabel();
         label_nom_salle = new javax.swing.JLabel();
@@ -129,6 +133,12 @@ public class NewJFrame extends javax.swing.JFrame {
         text_area_equipement = new javax.swing.JTextArea();
         label_numero_salle_equipement = new javax.swing.JLabel();
         champ_numero_salle_equipement = new javax.swing.JTextField();
+        label_supprimer_salle = new javax.swing.JLabel();
+        champ_supprimer_salle = new javax.swing.JTextField();
+        bouton_supprimer_salle = new javax.swing.JButton();
+        label_supprimer_equipement = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        bouton_supprimer_equipement = new javax.swing.JButton();
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -143,8 +153,9 @@ public class NewJFrame extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable2);
 
+        jButton1.setText("jButton1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1920, 1080));
 
         label_salle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         label_salle.setText("Salles :");
@@ -331,6 +342,40 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
+        label_supprimer_salle.setText("Entrer le numéro de la salle pour la supprimer :");
+
+        champ_supprimer_salle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                champ_supprimer_salleActionPerformed(evt);
+            }
+        });
+
+        bouton_supprimer_salle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        bouton_supprimer_salle.setForeground(new java.awt.Color(204, 0, 0));
+        bouton_supprimer_salle.setText("Supprimer la salle");
+        bouton_supprimer_salle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bouton_supprimer_salleActionPerformed(evt);
+            }
+        });
+
+        label_supprimer_equipement.setText("Entrer l'identifiant de l'équipement pour le supprimer :");
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
+        bouton_supprimer_equipement.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        bouton_supprimer_equipement.setForeground(new java.awt.Color(204, 0, 0));
+        bouton_supprimer_equipement.setText("Supprimer équipement");
+        bouton_supprimer_equipement.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bouton_supprimer_equipementActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -341,22 +386,16 @@ public class NewJFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(label_salle))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(label_ajout_equipement)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(ComboBox_type, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(label_type)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(champ_numero_salle_equipement, javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(label_numero_salle_equipement, javax.swing.GroupLayout.Alignment.LEADING)))
-                                        .addGap(0, 0, 0)))
+                                    .addComponent(label_type)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(champ_numero_salle_equipement, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(label_numero_salle_equipement, javax.swing.GroupLayout.Alignment.LEADING)))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -430,7 +469,10 @@ public class NewJFrame extends javax.swing.JFrame {
                                                     .addComponent(label_taille_ecran, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                     .addComponent(champ_taille_ecran, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label_equipement)))
+                            .addComponent(label_equipement)
+                            .addComponent(label_supprimer_equipement)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bouton_supprimer_equipement)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -463,7 +505,16 @@ public class NewJFrame extends javax.swing.JFrame {
                                             .addComponent(champ_poste_installe, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(1, 1, 1)
-                                        .addComponent(bouton_annuler_salle, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                        .addComponent(bouton_annuler_salle, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(44, 44, 44)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(label_supprimer_salle)
+                            .addComponent(champ_supprimer_salle, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bouton_supprimer_salle))))
+                .addContainerGap(800, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(label_salle)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -472,7 +523,14 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addComponent(label_salle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(label_supprimer_salle)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(champ_supprimer_salle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(13, 13, 13)
+                        .addComponent(bouton_supprimer_salle, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(label_ajout_salle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -552,7 +610,6 @@ public class NewJFrame extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(champ_cpu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(label_taille_ecran)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(champ_taille_ecran, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -581,7 +638,13 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addComponent(label_numero_salle_equipement)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(champ_numero_salle_equipement, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(277, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
+                .addComponent(label_supprimer_equipement)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
+                .addComponent(bouton_supprimer_equipement, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(91, 91, 91))
         );
 
         pack();
@@ -608,14 +671,13 @@ public class NewJFrame extends javax.swing.JFrame {
                         
                         if(type.equals("Ordinateur") == true)
                         {
-                            /*Ordinateur o = new Ordinateur(marque, modele, cpu, ram, os,champ_etat, adresse_mac, disque,carte_graphique,mobilite_pc,num_salle);
-                            st.executeUpdate(sql);*/
-                            Ordinateur o = new Ordinateur("msi", "ge80", "i3", 4, "w7", "allume", "AA:BB:CC:DD:EE:FF", 1000, 1024, "portable", 1);
+                            Ordinateur o = new Ordinateur(1,"msi", "ge80", "i3", 4, "w7", "allume", "AA:BB:CC:DD:EE:FF", 1000, 1024, "portable", 1);
                             String sql = "SELECT * FROM Ordinateur;";
                             ResultSet rs = st.executeQuery(sql);
                             text_area_equipement.setText("");
                             while (rs.next())
                             {
+                              o.id = rs.getInt("id_ordinateur");
                               o.marque = rs.getString("marque_ordinateur");
                               o.modele = rs.getString("modele_ordinateur");
                               o.cpu = rs.getString("cpu_ordinateur");
@@ -629,19 +691,20 @@ public class NewJFrame extends javax.swing.JFrame {
                               o.mobilite = rs.getString("type_ordinateur");
 
                               text_area_equipement.setEditable(false);
-                              text_area_equipement.setText(text_area_equipement.getText()+type+"\t"+o.getMobilite()+"\t"+o.getEtat()+"\t"+o.getMarque()+"\t"+o.getModele()+"\t"+o.getCpu()+"\t"+o.getRam()+"\t"+o.getDisque()+"\t"+o.getCarteGraphique()+"\t"+o.getOs()+"\t"+o.getAdresseMAC()+"\t"+o.getNumero_salle()+"\n");
+                              text_area_equipement.setText(text_area_equipement.getText()+o.getId()+"\t"+type+"\t"+o.getMobilite()+"\t"+o.getEtat()+"\t"+o.getMarque()+"\t"+o.getModele()+"\t"+o.getCpu()+"\t"+o.getRam()+"\t"+o.getDisque()+"\t"+o.getCarteGraphique()+"\t"+o.getOs()+"\t"+o.getAdresseMAC()+"\t"+o.getNumero_salle()+"\n");
                             }
                         }
                        
                         if(type.compareTo("Tablette") == 0)
                         { 
-                            Tablette t = new Tablette("dualcore", 4, "android", "allumee", "AA:BB:CC:DD:EE:CC", 32, 7, "Samsung", "tab", 1);
+                            Tablette t = new Tablette(1,"dualcore", 4, "android", "allumee", "AA:BB:CC:DD:EE:CC", 32, 7, "Samsung", "tab", 1);
                             String sql = "SELECT * FROM Tablette;";
                             ResultSet rs = st.executeQuery(sql);
                             text_area_equipement.setText("");
                             
                             while (rs.next())
                             {
+                              t.id = rs.getInt("id_tablette");
                               t.marque = rs.getString("marque_tablette");
                               t.modele = rs.getString("modele_tablette");
                               t.cpu = rs.getString("cpu_tablette");
@@ -654,19 +717,20 @@ public class NewJFrame extends javax.swing.JFrame {
                               t.tailleEcran = rs.getInt("taille_tablette");
 
                               text_area_equipement.setEditable(false);
-                              text_area_equipement.setText(text_area_equipement.getText()+type+"\t"+t.getEtat()+"\t"+t.getMarque()+"\t"+t.getModele()+"\t"+t.getCpu()+"\t"+t.getRam()+"\t"+t.getDisque()+"\t"+t.getOs()+"\t"+t.getAdresseMAC()+"\t"+t.getTailleEcran()+"\t"+t.getNumero_salle()+"\n");
+                              text_area_equipement.setText(text_area_equipement.getText()+t.getId()+"\t"+type+"\t"+t.getEtat()+"\t"+t.getMarque()+"\t"+t.getModele()+"\t"+t.getCpu()+"\t"+t.getRam()+"\t"+t.getDisque()+"\t"+t.getOs()+"\t"+t.getAdresseMAC()+"\t"+t.getTailleEcran()+"\t"+t.getNumero_salle()+"\n");
                             }
                         }
                         
                         if(type.equals("Routeur") == true)
                         {
-                            Routeur r = new Routeur("Cisco", "RV042G", "IOS", "allumee", 2, 8, 1);
+                            Routeur r = new Routeur(1,"Cisco", "RV042G", "IOS", "allumee", 2, 8, 1);
                             String sql = "SELECT * FROM Routeur;";
                             ResultSet rs = st.executeQuery(sql);
                             text_area_equipement.setText("");
                             
                             while (rs.next())
                             {
+                              r.id = rs.getInt("id_routeur");
                               r.marque = rs.getString("marque_routeur");
                               r.modele = rs.getString("modele_routeur");
                               r.os = rs.getString("os_routeur");
@@ -676,7 +740,7 @@ public class NewJFrame extends javax.swing.JFrame {
                               r.numero_salle = rs.getInt("num_salle");
                               
                               text_area_equipement.setEditable(false);
-                              text_area_equipement.setText(text_area_equipement.getText()+type+"\t"+r.getEtat()+"\t"+r.getMarque()+"\t"+r.getModele()+"\t"+r.getOs()+"\t"+r.getNbPortsGoEthernet()+"\t"+r.getNbPortsLAN()+"\t"+r.getNumero_salle()+"\n");
+                              text_area_equipement.setText(text_area_equipement.getText()+r.getId()+"\t"+type+"\t"+r.getEtat()+"\t"+r.getMarque()+"\t"+r.getModele()+"\t"+r.getOs()+"\t"+r.getNbPortsGoEthernet()+"\t"+r.getNbPortsLAN()+"\t"+r.getNumero_salle()+"\n");
                             }
                         }
                      
@@ -728,13 +792,13 @@ public class NewJFrame extends javax.swing.JFrame {
                         text_area_salle.setText("");
                         while (rs.next())
                         {
-                          num_salle = rs.getInt("num_salle");
-                          nom_salle = rs.getString("nom_salle");
-                          String emplacement_salle = rs.getString("emplacement_salle");
-                          int nb_poste_possible = rs.getInt("nb_poste_possible");
-                          int nb_poste_installe = rs.getInt("nb_poste_installe");
+                          s1.numeroSalle = rs.getInt("num_salle");
+                          s1.nom = rs.getString("nom_salle");
+                          s1.emplacement = rs.getString("emplacement_salle");
+                          s1.nbPostePossibles = rs.getInt("nb_poste_possible");
+                          s1.nbPosteInstalles = rs.getInt("nb_poste_installe");
                           text_area_salle.setEditable(false);
-                          text_area_salle.setText(text_area_salle.getText()+String.valueOf(num_salle)+"\t"+nom_salle+"\t"+emplacement_salle+"\t"+String.valueOf(nb_poste_possible)+"\t"+String.valueOf(nb_poste_installe)+" \n");
+                          text_area_salle.setText(text_area_salle.getText()+s1.getNumeroSalle()+"\t"+s1.getNom()+"\t"+s1.getEmplacement()+"\t"+s1.getNbPostePossibles()+"\t"+s1.getNbPosteInstalles()+" \n");
                         }
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -793,15 +857,26 @@ public class NewJFrame extends javax.swing.JFrame {
                         {
                             int carte_graphique = Integer.parseInt(champ_carte_graphique.getText());
                             System.out.println(mobilite_pc);
-                            Ordinateur o = new Ordinateur(marque, modele, cpu, ram, os,champ_etat, adresse_mac, disque,carte_graphique,mobilite_pc,num_salle);
+                            Ordinateur o = new Ordinateur(1,marque, modele, cpu, ram, os,champ_etat, adresse_mac, disque,carte_graphique,mobilite_pc,num_salle);
                             String sql = "INSERT INTO Ordinateur(marque_ordinateur,modele_ordinateur,cpu_ordinateur,ram_ordinateur,os_ordinateur,etat_ordinateur,adresse_MAC_ordinateur,disque_ordinateur,type_ordinateur,carte_graphique_ordinateur,num_salle)"
                                 + "VALUES('"+o.getMarque()+"','"+o.getModele()+"','"+o.getCpu()+"',"+o.getRam()+",'"+o.getOs()+"','"+o.getEtat()+"','"+o.getAdresseMAC()+"','"+o.getDisque()+"','"+o.getMobilite()+"',"+o.getCarteGraphique()+","+o.getNumero_salle()+");";
                             st.executeUpdate(sql);
-                            sql = "SELECT * FROM Ordinateur;";
+                            sql= "SELECT nb_poste_installe FROM Salle WHERE num_salle="+num_salle+";";
                             ResultSet rs = st.executeQuery(sql);
+                            int nb_old_poste_installe=0;
+                            while (rs.next())
+                            {
+                                nb_old_poste_installe = rs.getInt("nb_poste_installe");
+                            }
+                            nb_old_poste_installe = (nb_old_poste_installe + 1);
+                            sql = "UPDATE Salle SET nb_poste_installe = "+nb_old_poste_installe+"WHERE num_salle="+num_salle+";";
+                            st.executeUpdate(sql);
+                            sql = "SELECT * FROM Ordinateur;";
+                            rs = st.executeQuery(sql);
                             text_area_equipement.setText("");
                             while (rs.next())
                             {
+                              o.id = rs.getInt("id_ordinateur");
                               o.marque = rs.getString("marque_ordinateur");
                               o.modele = rs.getString("modele_ordinateur");
                               o.cpu = rs.getString("cpu_ordinateur");
@@ -815,14 +890,28 @@ public class NewJFrame extends javax.swing.JFrame {
                               o.mobilite = rs.getString("type_ordinateur");
 
                               text_area_equipement.setEditable(false);
-                              text_area_equipement.setText(text_area_equipement.getText()+type+"\t"+o.getMobilite()+"\t"+o.getEtat()+"\t"+o.getMarque()+"\t"+o.getModele()+"\t"+o.getCpu()+"\t"+o.getRam()+"\t"+o.getDisque()+"\t"+o.getCarteGraphique()+"\t"+o.getOs()+"\t"+o.getAdresseMAC()+"\t"+o.getNumero_salle()+"\n");
+                              text_area_equipement.setText(text_area_equipement.getText()+o.getId()+"\t"+type+"\t"+o.getMobilite()+"\t"+o.getEtat()+"\t"+o.getMarque()+"\t"+o.getModele()+"\t"+o.getCpu()+"\t"+o.getRam()+"\t"+o.getDisque()+"\t"+o.getCarteGraphique()+"\t"+o.getOs()+"\t"+o.getAdresseMAC()+"\t"+o.getNumero_salle()+"\n");
+                            }
+                            Salle s1 = new Salle(1,"init","univ",0,0);
+                            sql = "SELECT * FROM Salle;";
+                            rs = st.executeQuery(sql);
+                            text_area_salle.setText("");
+                            while (rs.next())
+                            {
+                              s1.numeroSalle = rs.getInt("num_salle");
+                              s1.nom = rs.getString("nom_salle");
+                              s1.emplacement = rs.getString("emplacement_salle");
+                              s1.nbPostePossibles = rs.getInt("nb_poste_possible");
+                              s1.nbPosteInstalles = rs.getInt("nb_poste_installe");
+                              text_area_salle.setEditable(false);
+                              text_area_salle.setText(text_area_salle.getText()+s1.getNumeroSalle()+"\t"+s1.getNom()+"\t"+s1.getEmplacement()+"\t"+s1.getNbPostePossibles()+"\t"+s1.getNbPosteInstalles()+" \n");
                             }
                         }
                        
                         if(type.compareTo("Tablette") == 0)
                         { 
                             int taille_ecran = Integer.parseInt(champ_taille_ecran.getText());
-                            Tablette t = new Tablette(cpu, ram, os, etat, adresse_mac, disque, taille_ecran, marque, modele, num_salle);
+                            Tablette t = new Tablette(1,cpu, ram, os, etat, adresse_mac, disque, taille_ecran, marque, modele, num_salle);
                             String sql = "INSERT INTO Tablette(marque_tablette,modele_tablette,cpu_tablette,ram_tablette,os_tablette,etat_tablette,adresse_MAC_tablette,disque_tablette,taille_tablette,num_salle)"
                                 + "VALUES('"+t.getMarque()+"','"+t.getModele()+"','"+t.getCpu()+"',"+t.getRam()+",'"+t.getOs()+"','"+t.getEtat()+"','"+t.getAdresseMAC()+"',"+t.getDisque()+","+t.getTailleEcran()+","+t.getNumero_salle()+");";
                             st.executeUpdate(sql);
@@ -832,6 +921,7 @@ public class NewJFrame extends javax.swing.JFrame {
                             
                             while (rs.next())
                             {
+                              t.id = rs.getInt("id_tablette");
                               t.marque = rs.getString("marque_tablette");
                               t.modele = rs.getString("modele_tablette");
                               t.cpu = rs.getString("cpu_tablette");
@@ -844,7 +934,7 @@ public class NewJFrame extends javax.swing.JFrame {
                               t.tailleEcran = rs.getInt("taille_tablette");
 
                               text_area_equipement.setEditable(false);
-                              text_area_equipement.setText(text_area_equipement.getText()+type+"\t"+t.getEtat()+"\t"+t.getMarque()+"\t"+t.getModele()+"\t"+t.getCpu()+"\t"+t.getRam()+"\t"+t.getDisque()+"\t"+t.getOs()+"\t"+t.getAdresseMAC()+"\t"+t.getTailleEcran()+"\t"+t.getNumero_salle()+"\n");
+                              text_area_equipement.setText(text_area_equipement.getText()+t.getId()+"\t"+type+"\t"+t.getEtat()+"\t"+t.getMarque()+"\t"+t.getModele()+"\t"+t.getCpu()+"\t"+t.getRam()+"\t"+t.getDisque()+"\t"+t.getOs()+"\t"+t.getAdresseMAC()+"\t"+t.getTailleEcran()+"\t"+t.getNumero_salle()+"\n");
                             }
                         }
                         
@@ -852,7 +942,7 @@ public class NewJFrame extends javax.swing.JFrame {
                         {
                             int nombre_ports_GE = Integer.parseInt(champ_nb_GE.getText());
                             int nombre_ports_LAN = Integer.parseInt(champ_nb_LAN.getText()); 
-                            Routeur r = new Routeur(marque, modele, os, etat, nombre_ports_GE, nombre_ports_LAN, num_salle);
+                            Routeur r = new Routeur(1,marque, modele, os, etat, nombre_ports_GE, nombre_ports_LAN, num_salle);
                             String sql = "INSERT INTO Routeur(marque_routeur,modele_routeur,os_routeur,etat_routeur,num_salle,nb_port_go_ethernet,nb_port_lan)"
                                 + "VALUES('"+r.getMarque()+"','"+r.getModele()+"','"+r.getOs()+"','"+r.getEtat()+"',"+r.getNumero_salle()+","+r.getNbPortsGoEthernet()+","+r.getNbPortsLAN()+");";
                             st.executeUpdate(sql);
@@ -862,6 +952,7 @@ public class NewJFrame extends javax.swing.JFrame {
                             
                             while (rs.next())
                             {
+                              r.id = rs.getInt("id_routeur");
                               r.marque = rs.getString("marque_routeur");
                               r.modele = rs.getString("modele_routeur");
                               r.os = rs.getString("os_routeur");
@@ -871,7 +962,7 @@ public class NewJFrame extends javax.swing.JFrame {
                               r.numero_salle = rs.getInt("num_salle");
                               
                               text_area_equipement.setEditable(false);
-                              text_area_equipement.setText(text_area_equipement.getText()+type+"\t"+r.getEtat()+"\t"+r.getMarque()+"\t"+r.getModele()+"\t"+r.getOs()+"\t"+r.getNbPortsGoEthernet()+"\t"+r.getNbPortsLAN()+"\t"+r.getNumero_salle()+"\n");
+                              text_area_equipement.setText(text_area_equipement.getText()+r.getId()+"\t"+type+"\t"+r.getEtat()+"\t"+r.getMarque()+"\t"+r.getModele()+"\t"+r.getOs()+"\t"+r.getNbPortsGoEthernet()+"\t"+r.getNbPortsLAN()+"\t"+r.getNumero_salle()+"\n");
                             }
                         }
                      
@@ -952,6 +1043,80 @@ public class NewJFrame extends javax.swing.JFrame {
     private void ComboBox_MobiliteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBox_MobiliteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ComboBox_MobiliteActionPerformed
+
+    private void champ_supprimer_salleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_champ_supprimer_salleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_champ_supprimer_salleActionPerformed
+
+    private void bouton_supprimer_salleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouton_supprimer_salleActionPerformed
+        // TODO add your handling code here:
+        int num_salle = Integer.parseInt(champ_supprimer_salle.getText()) ;
+        Connection cn =null;
+        Statement st =null;
+        
+        try {
+			Class.forName("com.mysql.jdbc.Driver");
+			cn = DriverManager.getConnection(url, login, passwd);
+			st = cn.createStatement();
+                        String sql = "DELETE FROM Ordinateur WHERE num_salle="+num_salle+";";
+                        st.executeUpdate(sql);
+                        sql = "DELETE FROM Tablette WHERE num_salle="+num_salle+";";
+                        st.executeUpdate(sql);
+                        sql = "DELETE FROM Routeur WHERE num_salle="+num_salle+";";
+                        st.executeUpdate(sql);
+                        sql = "DELETE FROM Salle WHERE num_salle="+num_salle+";";
+                        st.executeUpdate(sql);
+                        
+                        Salle s1 = new Salle(1,"init","univ",0,0);
+                        sql = "SELECT * FROM Salle;";
+                        ResultSet rs = st.executeQuery(sql);
+                        text_area_salle.setText("");
+                        while (rs.next())
+                        {
+                          s1.numeroSalle = rs.getInt("num_salle");
+                          s1.nom = rs.getString("nom_salle");
+                          s1.emplacement = rs.getString("emplacement_salle");
+                          s1.nbPostePossibles = rs.getInt("nb_poste_possible");
+                          s1.nbPosteInstalles = rs.getInt("nb_poste_installe");
+                          text_area_salle.setEditable(false);
+                          text_area_salle.setText(text_area_salle.getText()+s1.getNumeroSalle()+"\t"+s1.getNom()+"\t"+s1.getEmplacement()+"\t"+s1.getNbPostePossibles()+"\t"+s1.getNbPosteInstalles()+" \n");
+                        }
+                        champ_supprimer_salle.setText("");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				cn.close();
+				st.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+                }
+    }//GEN-LAST:event_bouton_supprimer_salleActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void bouton_supprimer_equipementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouton_supprimer_equipementActionPerformed
+        // TODO add your handling code here:
+        if(type.equals("Ordinateur") == true)
+        {
+
+        }
+        
+        if(type.equals("Tablette") == true)
+        {
+
+        }
+        
+        if(type.equals("Routeur") == true)
+        {
+
+        }
+    }//GEN-LAST:event_bouton_supprimer_equipementActionPerformed
 
     public void updateLabel(String ptype){
     
@@ -1070,6 +1235,8 @@ public class NewJFrame extends javax.swing.JFrame {
     public javax.swing.JComboBox ComboBox_type;
     private javax.swing.JButton bouton_annuler_equipement;
     private javax.swing.JButton bouton_annuler_salle;
+    private javax.swing.JButton bouton_supprimer_equipement;
+    private javax.swing.JButton bouton_supprimer_salle;
     private javax.swing.JButton bouton_valider_equipement;
     private javax.swing.JButton bouton_valider_salle;
     private javax.swing.JTextField champ_adresse_mac;
@@ -1088,12 +1255,15 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField champ_poste_possible;
     private javax.swing.JTextField champ_ram;
     private javax.swing.JTextField champ_salle;
+    private javax.swing.JTextField champ_supprimer_salle;
     private javax.swing.JTextField champ_taille_ecran;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel label_adresse_mac;
     private javax.swing.JLabel label_ajout_equipement;
     private javax.swing.JLabel label_ajout_salle;
@@ -1116,6 +1286,8 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel label_poste_possible;
     private javax.swing.JLabel label_ram;
     private javax.swing.JLabel label_salle;
+    private javax.swing.JLabel label_supprimer_equipement;
+    private javax.swing.JLabel label_supprimer_salle;
     private javax.swing.JLabel label_taille_ecran;
     private javax.swing.JLabel label_type;
     private javax.swing.JTextArea text_area_equipement;

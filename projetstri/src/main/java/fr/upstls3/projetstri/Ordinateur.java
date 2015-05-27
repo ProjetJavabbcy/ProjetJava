@@ -19,9 +19,9 @@ public class Ordinateur extends Equipement {
     protected int disque;
     
     
-    public Ordinateur(String marque, String modele,String cpu, int ram, String os, String etat, String adresseMAC, int disque,int carteGraphique,String mobilite, int numero_salle) 
+    public Ordinateur(int id, String marque, String modele,String cpu, int ram, String os, String etat, String adresseMAC, int disque,int carteGraphique,String mobilite, int numero_salle) 
     {
-        super(marque,modele,os,etat,numero_salle);
+        super(id,marque,modele,os,etat,numero_salle);
         this.carteGraphique = carteGraphique;
         this.mobilite = mobilite;
         this.adresseMAC = adresseMAC;

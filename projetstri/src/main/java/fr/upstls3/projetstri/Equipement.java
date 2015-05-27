@@ -16,14 +16,16 @@ public class Equipement {
     protected String marque;
     protected String modele;
     protected int numero_salle;
+    protected int id;
     
-    public Equipement (String marque,String modele,String os, String etat,int numero_salle)
+    public Equipement (int id,String marque,String modele,String os, String etat,int numero_salle)
     {
         this.marque = marque;
         this.modele = modele;
         this.os = os;
         this.etat= etat;
         this.numero_salle = numero_salle;
+        this.id =id;
     }
 
     public String getOs() {
@@ -45,6 +47,10 @@ public class Equipement {
     public int getNumero_salle() {
         return numero_salle;
     }
+
+    public int getId() {
+        return id;
+    }
     
     public void setOs(String os) {
         this.os = os;
@@ -65,5 +71,12 @@ public class Equipement {
     public void setNumero_salle(int numero_salle) {
         this.numero_salle = numero_salle;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    
+    
     
 }
