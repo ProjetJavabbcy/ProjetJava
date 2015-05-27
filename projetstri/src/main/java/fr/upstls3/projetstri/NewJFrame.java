@@ -139,6 +139,13 @@ public class NewJFrame extends javax.swing.JFrame {
         label_supprimer_equipement = new javax.swing.JLabel();
         champ_supprimer_equipement = new javax.swing.JTextField();
         bouton_supprimer_equipement = new javax.swing.JButton();
+        label_changement_etat = new javax.swing.JLabel();
+        champ_changement_etat = new javax.swing.JTextField();
+        bouton_changer_etat = new javax.swing.JButton();
+        label_changer_os = new javax.swing.JLabel();
+        champ_id_os = new javax.swing.JTextField();
+        bouton_changer_os = new javax.swing.JButton();
+        champ_nouvel_os = new javax.swing.JTextField();
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -378,6 +385,45 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
+        label_changement_etat.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        label_changement_etat.setText("Entrer l'identifiant d'un équipement pour changer son état :");
+
+        champ_changement_etat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                champ_changement_etatActionPerformed(evt);
+            }
+        });
+
+        bouton_changer_etat.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        bouton_changer_etat.setForeground(new java.awt.Color(0, 102, 255));
+        bouton_changer_etat.setText("Changer état");
+        bouton_changer_etat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bouton_changer_etatActionPerformed(evt);
+            }
+        });
+
+        label_changer_os.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        label_changer_os.setText("Entrer l'identifiant d'un equipement pour changer son OS et le nouvel OS :");
+
+        champ_id_os.setText("Id");
+
+        bouton_changer_os.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        bouton_changer_os.setForeground(new java.awt.Color(0, 102, 255));
+        bouton_changer_os.setText("Changer OS");
+        bouton_changer_os.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bouton_changer_osActionPerformed(evt);
+            }
+        });
+
+        champ_nouvel_os.setText("nom OS");
+        champ_nouvel_os.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                champ_nouvel_osActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -400,81 +446,95 @@ public class NewJFrame extends javax.swing.JFrame {
                                         .addComponent(label_numero_salle_equipement, javax.swing.GroupLayout.Alignment.LEADING)))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(label_marque)
+                                    .addComponent(champ_marque, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(10, 10, 10)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(champ_modele, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(label_modele))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(champ_os, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(label_marque)
-                                            .addComponent(champ_marque, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(10, 10, 10)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(champ_modele, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(label_modele))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(champ_os, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(3, 3, 3)
-                                                .addComponent(label_os)))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(label_etat)
-                                            .addComponent(Checkbox_allume)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(label_mobilite)
-                                                    .addComponent(ComboBox_Mobilite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(champ_cpu, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addGap(8, 8, 8)
-                                                        .addComponent(label_cpu)))
-                                                .addGap(18, 18, 18)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(label_ram, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addGap(37, 37, 37))
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(champ_ram, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(18, 18, 18)))
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(champ_disque, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(label_disque)))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(label_nombre_GE)
-                                                    .addComponent(champ_nb_GE, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addGap(18, 18, 18)
-                                                        .addComponent(label_nombre_LAN))
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addGap(18, 18, 18)
-                                                        .addComponent(champ_nb_LAN, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(bouton_valider_equipement, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(42, 42, 42)
-                                                .addComponent(bouton_annuler_equipement, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(label_adresse_mac)
-                                                    .addComponent(champ_adresse_mac, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(18, 18, 18)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(label_carte_graphique, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(champ_carte_graphique, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(18, 18, 18)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(label_taille_ecran, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(champ_taille_ecran, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                        .addGap(3, 3, 3)
+                                        .addComponent(label_os)))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(label_etat)
+                                    .addComponent(Checkbox_allume)))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label_equipement)
-                            .addComponent(label_supprimer_equipement)
-                            .addComponent(champ_supprimer_equipement, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bouton_supprimer_equipement)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(label_supprimer_equipement)
+                                    .addComponent(champ_supprimer_equipement, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(bouton_supprimer_equipement))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(label_changement_etat)
+                                    .addComponent(champ_changement_etat, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(bouton_changer_etat, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(29, 29, 29)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(label_changer_os)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(champ_id_os, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(champ_nouvel_os, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(bouton_changer_os, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(150, 150, 150)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(label_mobilite)
+                                            .addComponent(ComboBox_Mobilite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(champ_cpu, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(8, 8, 8)
+                                                .addComponent(label_cpu)))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(label_ram, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addGap(37, 37, 37))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(champ_ram, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(champ_disque, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(label_disque)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(label_nombre_GE)
+                                            .addComponent(champ_nb_GE, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(18, 18, 18)
+                                                .addComponent(label_nombre_LAN))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(18, 18, 18)
+                                                .addComponent(champ_nb_LAN, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(bouton_valider_equipement, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(42, 42, 42)
+                                        .addComponent(bouton_annuler_equipement, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(label_adresse_mac)
+                                            .addComponent(champ_adresse_mac, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(label_carte_graphique, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(champ_carte_graphique, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(label_taille_ecran, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(champ_taille_ecran, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -512,12 +572,11 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(label_supprimer_salle)
                             .addComponent(champ_supprimer_salle, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bouton_supprimer_salle))))
-                .addContainerGap(800, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(label_salle)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(bouton_supprimer_salle)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(label_salle)))
+                .addContainerGap(1398, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -640,13 +699,30 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addComponent(label_numero_salle_equipement)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(champ_numero_salle_equipement, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
-                .addComponent(label_supprimer_equipement)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(champ_supprimer_equipement, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14)
-                .addComponent(bouton_supprimer_equipement, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(91, 91, 91))
+                .addGap(53, 53, 53)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(label_changement_etat)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(champ_changement_etat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(57, 57, 57))
+                        .addComponent(bouton_changer_etat, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(label_supprimer_equipement)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(champ_supprimer_equipement, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14)
+                        .addComponent(bouton_supprimer_equipement, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(label_changer_os)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(champ_id_os, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(champ_nouvel_os, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(bouton_changer_os, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(38, 38, 38))
         );
 
         pack();
@@ -1351,6 +1427,347 @@ public class NewJFrame extends javax.swing.JFrame {
                 }        
     }//GEN-LAST:event_bouton_supprimer_equipementActionPerformed
 
+    private void bouton_changer_etatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouton_changer_etatActionPerformed
+        // TODO add your handling code here:
+        
+        int id_equipement = Integer.parseInt(champ_changement_etat.getText());
+        Connection cn =null;
+        Statement st =null;
+        
+        try {
+                        Class.forName("com.mysql.jdbc.Driver");
+			cn = DriverManager.getConnection(url, login, passwd);
+			st = cn.createStatement();
+                        
+                        if(type.equals("Ordinateur") == true)
+                        {
+                            
+                            String sql= "SELECT etat_ordinateur FROM Ordinateur WHERE id_ordinateur="+id_equipement+";";
+                            ResultSet rs = st.executeQuery(sql);
+                            String etat_ancien="";
+                            while (rs.next())
+                            {
+                                etat_ancien = rs.getString("etat_ordinateur");
+                            }
+                            if(etat_ancien.equals("allume") == true)
+                            {
+                                sql= "UPDATE Ordinateur SET etat_ordinateur = 'eteint' WHERE id_ordinateur="+id_equipement+";";
+                                st.executeUpdate(sql);
+                                Ordinateur o = new Ordinateur(1,"msi", "ge80", "i3", 4, "w7", "allume", "AA:BB:CC:DD:EE:FF", 1000, 1024, "portable", 1);
+                                sql = "SELECT * FROM Ordinateur;";
+                                rs = st.executeQuery(sql);
+                                text_area_equipement.setText("");
+                                while (rs.next())
+                                {
+                                  o.id = rs.getInt("id_ordinateur");
+                                  o.marque = rs.getString("marque_ordinateur");
+                                  o.modele = rs.getString("modele_ordinateur");
+                                  o.cpu = rs.getString("cpu_ordinateur");
+                                  o.ram = rs.getInt("ram_ordinateur");
+                                  o.os = rs.getString("os_ordinateur");
+                                  o.etat = rs.getString("etat_ordinateur");
+                                  o.adresseMAC = rs.getString("adresse_MAC_ordinateur");
+                                  o.disque = rs.getInt("disque_ordinateur");
+                                  o.carteGraphique = rs.getInt("carte_graphique_ordinateur");
+                                  o.numero_salle = rs.getInt("num_salle");
+                                  o.mobilite = rs.getString("type_ordinateur");
+
+                                  text_area_equipement.setEditable(false);
+                                  text_area_equipement.setText(text_area_equipement.getText()+o.getId()+"\t"+type+"\t"+o.getMobilite()+"\t"+o.getEtat()+"\t"+o.getMarque()+"\t"+o.getModele()+"\t"+o.getCpu()+"\t"+o.getRam()+"\t"+o.getDisque()+"\t"+o.getCarteGraphique()+"\t"+o.getOs()+"\t"+o.getAdresseMAC()+"\t"+o.getNumero_salle()+"\n");
+                                }
+                                champ_changement_etat.setText("");
+                            }
+                            else
+                            {
+                                sql= "UPDATE Ordinateur SET etat_ordinateur = 'allume' WHERE id_ordinateur="+id_equipement+";";
+                                st.executeUpdate(sql);
+                                Ordinateur o = new Ordinateur(1,"msi", "ge80", "i3", 4, "w7", "allume", "AA:BB:CC:DD:EE:FF", 1000, 1024, "portable", 1);
+                                sql = "SELECT * FROM Ordinateur;";
+                                rs = st.executeQuery(sql);
+                                text_area_equipement.setText("");
+                                while (rs.next())
+                                {
+                                  o.id = rs.getInt("id_ordinateur");
+                                  o.marque = rs.getString("marque_ordinateur");
+                                  o.modele = rs.getString("modele_ordinateur");
+                                  o.cpu = rs.getString("cpu_ordinateur");
+                                  o.ram = rs.getInt("ram_ordinateur");
+                                  o.os = rs.getString("os_ordinateur");
+                                  o.etat = rs.getString("etat_ordinateur");
+                                  o.adresseMAC = rs.getString("adresse_MAC_ordinateur");
+                                  o.disque = rs.getInt("disque_ordinateur");
+                                  o.carteGraphique = rs.getInt("carte_graphique_ordinateur");
+                                  o.numero_salle = rs.getInt("num_salle");
+                                  o.mobilite = rs.getString("type_ordinateur");
+
+                                  text_area_equipement.setEditable(false);
+                                  text_area_equipement.setText(text_area_equipement.getText()+o.getId()+"\t"+type+"\t"+o.getMobilite()+"\t"+o.getEtat()+"\t"+o.getMarque()+"\t"+o.getModele()+"\t"+o.getCpu()+"\t"+o.getRam()+"\t"+o.getDisque()+"\t"+o.getCarteGraphique()+"\t"+o.getOs()+"\t"+o.getAdresseMAC()+"\t"+o.getNumero_salle()+"\n");
+                                }
+                                champ_changement_etat.setText("");
+                            }
+                        }
+                        
+                        
+                        if(type.equals("Tablette") == true)
+                        {
+                            String sql= "SELECT etat_tablette FROM Tablette WHERE id_tablette="+id_equipement+";";
+                            ResultSet rs = st.executeQuery(sql);
+                            String etat_ancien="";
+                            while (rs.next())
+                            {
+                                etat_ancien = rs.getString("etat_tablette");
+                            }
+                            if(etat_ancien.equals("allume") == true)
+                            {
+                                sql= "UPDATE Tablette SET etat_tablette = 'eteint' WHERE id_tablette="+id_equipement+";";
+                                st.executeUpdate(sql);
+                                Tablette t = new Tablette(1,"dualcore", 4, "android", "allumee", "AA:BB:CC:DD:EE:CC", 32, 7, "Samsung", "tab", 1);
+                                sql = "SELECT * FROM Tablette;";
+                                rs = st.executeQuery(sql);
+                                text_area_equipement.setText("");
+                                while (rs.next())
+                                {
+                                  t.id = rs.getInt("id_tablette");
+                                  t.marque = rs.getString("marque_tablette");
+                                  t.modele = rs.getString("modele_tablette");
+                                  t.cpu = rs.getString("cpu_tablette");
+                                  t.ram = rs.getInt("ram_tablette");
+                                  t.os = rs.getString("os_tablette");
+                                  t.etat = rs.getString("etat_tablette");
+                                  t.adresseMAC = rs.getString("adresse_MAC_tablette");
+                                  t.disque = rs.getInt("disque_tablette");                            
+                                  t.numero_salle = rs.getInt("num_salle");
+                                  t.tailleEcran = rs.getInt("taille_tablette");
+
+                                  text_area_equipement.setEditable(false);
+                                  text_area_equipement.setText(text_area_equipement.getText()+t.getId()+"\t"+type+"\t"+t.getEtat()+"\t"+t.getMarque()+"\t"+t.getModele()+"\t"+t.getCpu()+"\t"+t.getRam()+"\t"+t.getDisque()+"\t"+t.getOs()+"\t"+t.getAdresseMAC()+"\t"+t.getTailleEcran()+"\t"+t.getNumero_salle()+"\n");
+                                }
+                                champ_changement_etat.setText("");
+                            }
+                            else
+                            {
+                                sql= "UPDATE Tablette SET etat_tablette = 'allume' WHERE id_tablette="+id_equipement+";";
+                                st.executeUpdate(sql);
+                                Tablette t = new Tablette(1,"dualcore", 4, "android", "allumee", "AA:BB:CC:DD:EE:CC", 32, 7, "Samsung", "tab", 1);
+                                sql = "SELECT * FROM Tablette;";
+                                rs = st.executeQuery(sql);
+                                text_area_equipement.setText("");
+                                while (rs.next())
+                                {
+                                  t.id = rs.getInt("id_tablette");
+                                  t.marque = rs.getString("marque_tablette");
+                                  t.modele = rs.getString("modele_tablette");
+                                  t.cpu = rs.getString("cpu_tablette");
+                                  t.ram = rs.getInt("ram_tablette");
+                                  t.os = rs.getString("os_tablette");
+                                  t.etat = rs.getString("etat_tablette");
+                                  t.adresseMAC = rs.getString("adresse_MAC_tablette");
+                                  t.disque = rs.getInt("disque_tablette");                            
+                                  t.numero_salle = rs.getInt("num_salle");
+                                  t.tailleEcran = rs.getInt("taille_tablette");
+
+                                  text_area_equipement.setEditable(false);
+                                  text_area_equipement.setText(text_area_equipement.getText()+t.getId()+"\t"+type+"\t"+t.getEtat()+"\t"+t.getMarque()+"\t"+t.getModele()+"\t"+t.getCpu()+"\t"+t.getRam()+"\t"+t.getDisque()+"\t"+t.getOs()+"\t"+t.getAdresseMAC()+"\t"+t.getTailleEcran()+"\t"+t.getNumero_salle()+"\n");
+                                }
+                                champ_changement_etat.setText("");
+                            }
+                        }
+                            
+                            if(type.equals("Routeur") == true)
+                            {
+                            String sql= "SELECT etat_routeur FROM Routeur WHERE id_routeur="+id_equipement+";";
+                            ResultSet rs = st.executeQuery(sql);
+                            String etat_ancien="";
+                            while (rs.next())
+                            {
+                                etat_ancien = rs.getString("etat_routeur");
+                            }
+                            if(etat_ancien.equals("allume") == true)
+                            {
+                                sql= "UPDATE Routeur SET etat_routeur = 'eteint' WHERE id_routeur="+id_equipement+";";
+                                st.executeUpdate(sql);
+                                Routeur r = new Routeur(1,"Cisco", "RV042G", "IOS", "allumee", 2, 8, 1);
+                                sql = "SELECT * FROM Routeur;";
+                                rs = st.executeQuery(sql);
+                                text_area_equipement.setText("");
+                                while (rs.next())
+                                {
+                                  r.id = rs.getInt("id_routeur");
+                                  r.marque = rs.getString("marque_routeur");
+                                  r.modele = rs.getString("modele_routeur");
+                                  r.os = rs.getString("os_routeur");
+                                  r.etat = rs.getString("etat_routeur");
+                                  r.nbPortsGoEthernet = rs.getInt("nb_port_go_ethernet");
+                                  r.nbPortsLAN = rs.getInt("nb_port_lan");
+                                  r.numero_salle = rs.getInt("num_salle");
+
+                                  text_area_equipement.setEditable(false);
+                                  text_area_equipement.setText(text_area_equipement.getText()+r.getId()+"\t"+type+"\t"+r.getEtat()+"\t"+r.getMarque()+"\t"+r.getModele()+"\t"+r.getOs()+"\t"+r.getNbPortsGoEthernet()+"\t"+r.getNbPortsLAN()+"\t"+r.getNumero_salle()+"\n");
+                                }
+                                champ_changement_etat.setText("");
+                            }
+                            else
+                            {
+                                sql= "UPDATE Routeur SET etat_routeur = 'allume' WHERE id_routeur="+id_equipement+";";
+                                st.executeUpdate(sql);
+                                Routeur r = new Routeur(1,"Cisco", "RV042G", "IOS", "allumee", 2, 8, 1);
+                                sql = "SELECT * FROM Routeur;";
+                                rs = st.executeQuery(sql);
+                                text_area_equipement.setText("");
+                                while (rs.next())
+                                {
+                                  r.id = rs.getInt("id_routeur");
+                                  r.marque = rs.getString("marque_routeur");
+                                  r.modele = rs.getString("modele_routeur");
+                                  r.os = rs.getString("os_routeur");
+                                  r.etat = rs.getString("etat_routeur");
+                                  r.nbPortsGoEthernet = rs.getInt("nb_port_go_ethernet");
+                                  r.nbPortsLAN = rs.getInt("nb_port_lan");
+                                  r.numero_salle = rs.getInt("num_salle");
+
+                                  text_area_equipement.setEditable(false);
+                                  text_area_equipement.setText(text_area_equipement.getText()+r.getId()+"\t"+type+"\t"+r.getEtat()+"\t"+r.getMarque()+"\t"+r.getModele()+"\t"+r.getOs()+"\t"+r.getNbPortsGoEthernet()+"\t"+r.getNbPortsLAN()+"\t"+r.getNumero_salle()+"\n");
+                                }
+                                champ_changement_etat.setText("");
+                            }
+                        }
+        } catch (SQLException e) {
+                        e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                        e.printStackTrace();
+                } finally {
+                        try {
+                                cn.close();
+                                st.close();
+                        } catch (SQLException e) {
+                                e.printStackTrace();
+                        }
+                }        
+        
+    }//GEN-LAST:event_bouton_changer_etatActionPerformed
+
+    private void champ_changement_etatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_champ_changement_etatActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_champ_changement_etatActionPerformed
+
+    private void champ_nouvel_osActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_champ_nouvel_osActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_champ_nouvel_osActionPerformed
+
+    private void bouton_changer_osActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouton_changer_osActionPerformed
+        // TODO add your handling code here:
+        int id_equipement = Integer.parseInt(champ_id_os.getText());
+        String nom_OS = champ_nouvel_os.getText();
+        Connection cn =null;
+        Statement st =null;
+        
+        try {
+                        Class.forName("com.mysql.jdbc.Driver");
+			cn = DriverManager.getConnection(url, login, passwd);
+			st = cn.createStatement();
+                        
+                        if(type.equals("Ordinateur") == true)
+                        {
+                            
+                            String sql= "UPDATE Ordinateur SET os_ordinateur ='"+nom_OS+"' WHERE id_ordinateur="+id_equipement+";";
+                            st.executeUpdate(sql);
+                            Ordinateur o = new Ordinateur(1,"msi", "ge80", "i3", 4, "w7", "allume", "AA:BB:CC:DD:EE:FF", 1000, 1024, "portable", 1);
+                            sql = "SELECT * FROM Ordinateur;";
+                            ResultSet rs = st.executeQuery(sql);
+                            text_area_equipement.setText("");
+                            while (rs.next())
+                            {
+                              o.id = rs.getInt("id_ordinateur");
+                              o.marque = rs.getString("marque_ordinateur");
+                              o.modele = rs.getString("modele_ordinateur");
+                              o.cpu = rs.getString("cpu_ordinateur");
+                              o.ram = rs.getInt("ram_ordinateur");
+                              o.os = rs.getString("os_ordinateur");
+                              o.etat = rs.getString("etat_ordinateur");
+                              o.adresseMAC = rs.getString("adresse_MAC_ordinateur");
+                              o.disque = rs.getInt("disque_ordinateur");
+                              o.carteGraphique = rs.getInt("carte_graphique_ordinateur");
+                              o.numero_salle = rs.getInt("num_salle");
+                              o.mobilite = rs.getString("type_ordinateur");
+
+                              text_area_equipement.setEditable(false);
+                              text_area_equipement.setText(text_area_equipement.getText()+o.getId()+"\t"+type+"\t"+o.getMobilite()+"\t"+o.getEtat()+"\t"+o.getMarque()+"\t"+o.getModele()+"\t"+o.getCpu()+"\t"+o.getRam()+"\t"+o.getDisque()+"\t"+o.getCarteGraphique()+"\t"+o.getOs()+"\t"+o.getAdresseMAC()+"\t"+o.getNumero_salle()+"\n");
+                            }
+                            champ_id_os.setText("");
+                            champ_nouvel_os.setText("");
+                        }
+                        if(type.equals("Tablette") == true)
+                        {
+                            
+                            String sql= "UPDATE Tablette SET os_tablette ='"+nom_OS+"' WHERE id_tablette="+id_equipement+";";
+                            st.executeUpdate(sql);
+                            Tablette t = new Tablette(1,"dualcore", 4, "android", "allumee", "AA:BB:CC:DD:EE:CC", 32, 7, "Samsung", "tab", 1);
+                            sql = "SELECT * FROM Tablette;";
+                            ResultSet rs = st.executeQuery(sql);
+                            text_area_equipement.setText("");
+                            while (rs.next())
+                                {
+                                  t.id = rs.getInt("id_tablette");
+                                  t.marque = rs.getString("marque_tablette");
+                                  t.modele = rs.getString("modele_tablette");
+                                  t.cpu = rs.getString("cpu_tablette");
+                                  t.ram = rs.getInt("ram_tablette");
+                                  t.os = rs.getString("os_tablette");
+                                  t.etat = rs.getString("etat_tablette");
+                                  t.adresseMAC = rs.getString("adresse_MAC_tablette");
+                                  t.disque = rs.getInt("disque_tablette");                            
+                                  t.numero_salle = rs.getInt("num_salle");
+                                  t.tailleEcran = rs.getInt("taille_tablette");
+
+                                  text_area_equipement.setEditable(false);
+                                  text_area_equipement.setText(text_area_equipement.getText()+t.getId()+"\t"+type+"\t"+t.getEtat()+"\t"+t.getMarque()+"\t"+t.getModele()+"\t"+t.getCpu()+"\t"+t.getRam()+"\t"+t.getDisque()+"\t"+t.getOs()+"\t"+t.getAdresseMAC()+"\t"+t.getTailleEcran()+"\t"+t.getNumero_salle()+"\n");
+                                }
+                            champ_id_os.setText("");
+                            champ_nouvel_os.setText("");
+                        }
+                        if(type.equals("Routeur") == true)
+                        {
+                            
+                            String sql= "UPDATE Routeur SET os_routeur ='"+nom_OS+"' WHERE id_routeur="+id_equipement+";";
+                            st.executeUpdate(sql);
+                            Routeur r = new Routeur(1,"Cisco", "RV042G", "IOS", "allumee", 2, 8, 1);
+                            sql = "SELECT * FROM Routeur;";
+                            ResultSet rs = st.executeQuery(sql);
+                            text_area_equipement.setText("");
+                            while (rs.next())
+                                {
+                                  r.id = rs.getInt("id_routeur");
+                                  r.marque = rs.getString("marque_routeur");
+                                  r.modele = rs.getString("modele_routeur");
+                                  r.os = rs.getString("os_routeur");
+                                  r.etat = rs.getString("etat_routeur");
+                                  r.nbPortsGoEthernet = rs.getInt("nb_port_go_ethernet");
+                                  r.nbPortsLAN = rs.getInt("nb_port_lan");
+                                  r.numero_salle = rs.getInt("num_salle");
+
+                                  text_area_equipement.setEditable(false);
+                                  text_area_equipement.setText(text_area_equipement.getText()+r.getId()+"\t"+type+"\t"+r.getEtat()+"\t"+r.getMarque()+"\t"+r.getModele()+"\t"+r.getOs()+"\t"+r.getNbPortsGoEthernet()+"\t"+r.getNbPortsLAN()+"\t"+r.getNumero_salle()+"\n");
+                                }
+                            champ_id_os.setText("");
+                            champ_nouvel_os.setText("");
+                        }
+        } catch (SQLException e) {
+                        e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                        e.printStackTrace();
+                } finally {
+                        try {
+                                cn.close();
+                                st.close();
+                        } catch (SQLException e) {
+                                e.printStackTrace();
+                        }
+                }        
+        
+        
+        
+    }//GEN-LAST:event_bouton_changer_osActionPerformed
+
     public void updateLabel(String ptype){
     
     
@@ -1468,19 +1885,24 @@ public class NewJFrame extends javax.swing.JFrame {
     public javax.swing.JComboBox ComboBox_type;
     private javax.swing.JButton bouton_annuler_equipement;
     private javax.swing.JButton bouton_annuler_salle;
+    private javax.swing.JButton bouton_changer_etat;
+    private javax.swing.JButton bouton_changer_os;
     private javax.swing.JButton bouton_supprimer_equipement;
     private javax.swing.JButton bouton_supprimer_salle;
     private javax.swing.JButton bouton_valider_equipement;
     private javax.swing.JButton bouton_valider_salle;
     private javax.swing.JTextField champ_adresse_mac;
     private javax.swing.JTextField champ_carte_graphique;
+    private javax.swing.JTextField champ_changement_etat;
     private javax.swing.JTextField champ_cpu;
     private javax.swing.JTextField champ_disque;
     private javax.swing.JTextField champ_emplacement_salle;
+    private javax.swing.JTextField champ_id_os;
     private javax.swing.JTextField champ_marque;
     private javax.swing.JTextField champ_modele;
     private javax.swing.JTextField champ_nb_GE;
     private javax.swing.JTextField champ_nb_LAN;
+    private javax.swing.JTextField champ_nouvel_os;
     private javax.swing.JTextField champ_num_salle;
     private javax.swing.JTextField champ_numero_salle_equipement;
     private javax.swing.JTextField champ_os;
@@ -1501,6 +1923,8 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel label_ajout_equipement;
     private javax.swing.JLabel label_ajout_salle;
     private javax.swing.JLabel label_carte_graphique;
+    private javax.swing.JLabel label_changement_etat;
+    private javax.swing.JLabel label_changer_os;
     private javax.swing.JLabel label_cpu;
     private javax.swing.JLabel label_disque;
     private javax.swing.JLabel label_emplacement_salle;
