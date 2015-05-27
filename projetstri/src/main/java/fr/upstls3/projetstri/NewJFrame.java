@@ -869,7 +869,7 @@ public class NewJFrame extends javax.swing.JFrame {
                                 nb_old_poste_installe = rs.getInt("nb_poste_installe");
                             }
                             nb_old_poste_installe = (nb_old_poste_installe + 1);
-                            sql = "UPDATE Salle SET nb_poste_installe = "+nb_old_poste_installe+"WHERE num_salle="+num_salle+";";
+                            sql = "UPDATE Salle SET nb_poste_installe = "+nb_old_poste_installe+" WHERE num_salle="+num_salle+";";
                             st.executeUpdate(sql);
                             sql = "SELECT * FROM Ordinateur;";
                             rs = st.executeQuery(sql);
