@@ -31,6 +31,9 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[1366, 768]"/>
+    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -65,10 +68,8 @@
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="ComboBox_type" alignment="1" max="32767" attributes="0"/>
                                   <Component id="label_type" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="champ_numero_salle_equipement" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="label_numero_salle_equipement" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="champ_numero_salle_equipement" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="label_numero_salle_equipement" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">

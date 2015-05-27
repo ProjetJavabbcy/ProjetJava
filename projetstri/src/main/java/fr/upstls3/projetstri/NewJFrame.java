@@ -11,9 +11,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+
 /**
- *
- * @author 21408116
+ * Classe Tablette NewJFrame héritée de la classe javax.swing.JFrame
+ * @author Ludovic BOMBAIL, Selim YAHI, Cyril CRISTOFOL, Loic BARBARESCO
  */
 public class NewJFrame extends javax.swing.JFrame {
     
@@ -26,6 +27,7 @@ public class NewJFrame extends javax.swing.JFrame {
     
     /**
      * Creates new form NewJFrame
+     * @author Ludovic BOMBAIL - Cyril CRISTOFOL - Selim YAHI - Loic BARBARESCO
      */
     public NewJFrame() {
         initComponents();
@@ -40,9 +42,12 @@ public class NewJFrame extends javax.swing.JFrame {
 			st = cn.createStatement();
                         
                         Salle s1 = new Salle(1,"init","univ",0,0);
+                        // Mise en forme de la requete
                         String sql = "SELECT * FROM Salle;";
+                        // Resultat de la requete
                         ResultSet rs = st.executeQuery(sql);
                         text_area_salle.setText("");
+                         // Tant qu'il y a des lignes dans le resultat
                         while (rs.next())
                         {
                           s1.numeroSalle = rs.getInt("num_salle");
@@ -163,6 +168,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1366, 768));
 
         label_salle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         label_salle.setText("Salles :");
@@ -441,9 +447,8 @@ public class NewJFrame extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(ComboBox_type, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(label_type)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(champ_numero_salle_equipement, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(label_numero_salle_equipement, javax.swing.GroupLayout.Alignment.LEADING)))
+                                    .addComponent(champ_numero_salle_equipement)
+                                    .addComponent(label_numero_salle_equipement))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(label_marque)
@@ -728,10 +733,17 @@ public class NewJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
     private void champ_salleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_champ_salleActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_champ_salleActionPerformed
 
+     /** Clic comboBox type
+     * @Author Ludovic BOMBAIL
+     * @param evt 
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     private void ComboBox_typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBox_typeActionPerformed
         // TODO add your handling code here:
         JComboBox cb = (JComboBox)evt.getSource();
@@ -844,10 +856,14 @@ public class NewJFrame extends javax.swing.JFrame {
     private void champ_osActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_champ_osActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_champ_osActionPerformed
-
+    /** Clic bouton valider salle
+     * @Author Ludovic BOMBAIL
+     * @param evt 
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */    
     private void bouton_valider_salleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouton_valider_salleActionPerformed
-        // TODO add your handling code here:
-        
+      
         int num_salle = Integer.parseInt(champ_num_salle.getText()) ;
         int poste_possible = Integer.parseInt(champ_poste_possible.getText()) ;
         int poste_installe = Integer.parseInt(champ_poste_installe.getText()) ;
@@ -901,6 +917,12 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_champ_emplacement_salleActionPerformed
 
+    /** Clic bouton annuler salle
+     * @Author Loic BARBARESCO
+     * @param evt 
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */  
     private void bouton_annuler_salleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouton_annuler_salleActionPerformed
         // TODO add your handling code here:
         champ_num_salle.setText("");
@@ -910,6 +932,11 @@ public class NewJFrame extends javax.swing.JFrame {
         champ_poste_installe.setText("");
     }//GEN-LAST:event_bouton_annuler_salleActionPerformed
 
+    /** Clic bouton valider equipement
+     * @Author Selim YAHI
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */ 
     private void bouton_valider_equipementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouton_valider_equipementActionPerformed
         // TODO add your handling code here:
         String cpu = champ_cpu.getText();
@@ -1106,7 +1133,9 @@ public class NewJFrame extends javax.swing.JFrame {
                 }   
                         
     }//GEN-LAST:event_bouton_valider_equipementActionPerformed
-
+    /** Clic bouton changement etat
+     * @Author Ludovic BOMBAIL
+     */ 
     private void Checkbox_allumeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Checkbox_allumeActionPerformed
         // TODO add your handling code here
         JCheckBox checkbox = (JCheckBox)evt.getSource();
@@ -1117,7 +1146,10 @@ public class NewJFrame extends javax.swing.JFrame {
             champ_etat = "eteint";
         etat = champ_etat;
     }//GEN-LAST:event_Checkbox_allumeActionPerformed
-
+    /** Clic bouton annuler equipement pour remettre les champs à vide
+     * @Author Selim YAHI
+     * @param evt 
+     */
     private void bouton_annuler_equipementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouton_annuler_equipementActionPerformed
         // TODO add your handling code here:
         champ_adresse_mac.setText("");
@@ -1134,7 +1166,10 @@ public class NewJFrame extends javax.swing.JFrame {
         champ_taille_ecran.setText("");
         
     }//GEN-LAST:event_bouton_annuler_equipementActionPerformed
-
+    /** Clic bouton type equipement
+     * @Author Loic BARBARESCO
+     * @param evt 
+     */
     private void ComboBox_typeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ComboBox_typeItemStateChanged
         // TODO add your handling code here:
         JComboBox cb = (JComboBox)evt.getSource();
@@ -1158,7 +1193,10 @@ public class NewJFrame extends javax.swing.JFrame {
     private void champ_numero_salle_equipementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_champ_numero_salle_equipementActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_champ_numero_salle_equipementActionPerformed
-
+     /** Clic bouton mobilite ordinateur
+     * @Author Selim YAHI
+     * @param evt 
+     */
     private void ComboBox_MobiliteItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ComboBox_MobiliteItemStateChanged
         // TODO add your handling code here:
         JComboBox cb_mobi = (JComboBox)evt.getSource();
@@ -1173,7 +1211,12 @@ public class NewJFrame extends javax.swing.JFrame {
     private void champ_supprimer_salleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_champ_supprimer_salleActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_champ_supprimer_salleActionPerformed
-
+    /** Clic bouton supprimer salle
+     * @Author Cyril CRISTOPHOL
+     * @param evt 
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     private void bouton_supprimer_salleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouton_supprimer_salleActionPerformed
         // TODO add your handling code here:
         int num_salle = Integer.parseInt(champ_supprimer_salle.getText()) ;
@@ -1225,7 +1268,12 @@ public class NewJFrame extends javax.swing.JFrame {
     private void champ_supprimer_equipementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_champ_supprimer_equipementActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_champ_supprimer_equipementActionPerformed
-
+     /** Clic bouton supprimer equipement
+     * @Author Ludovic BOMBAIL
+     * @param evt 
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     private void bouton_supprimer_equipementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouton_supprimer_equipementActionPerformed
         // TODO add your handling code here:
         int id_equipement = Integer.parseInt(champ_supprimer_equipement.getText()) ;
@@ -1426,7 +1474,12 @@ public class NewJFrame extends javax.swing.JFrame {
                         }
                 }        
     }//GEN-LAST:event_bouton_supprimer_equipementActionPerformed
-
+    /** Procedure qui grise ou active les labels en fonction du type de l'équipement
+     * @Author Ludovic BOMBAIL
+     * @param evt 
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     private void bouton_changer_etatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouton_changer_etatActionPerformed
         // TODO add your handling code here:
         
@@ -1653,7 +1706,12 @@ public class NewJFrame extends javax.swing.JFrame {
     private void champ_nouvel_osActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_champ_nouvel_osActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_champ_nouvel_osActionPerformed
-
+    /** Procedure permettant de modifier l'os d'un ordinateur, d'une tablette ou d'un routeur
+     * @Author Ludovic BOMBAIL - Cyril CRISTOFOL
+     * @param evt 
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     private void bouton_changer_osActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouton_changer_osActionPerformed
         // TODO add your handling code here:
         int id_equipement = Integer.parseInt(champ_id_os.getText());
@@ -1767,7 +1825,10 @@ public class NewJFrame extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_bouton_changer_osActionPerformed
-
+    /** Procedure qui grise ou active les labels en fonction du type de l'équipement
+     * @Author Ludovic BOMBAIL
+     * @param ptype
+     */
     public void updateLabel(String ptype){
     
     
